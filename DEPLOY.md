@@ -24,6 +24,7 @@ This site currently runs as a small Python app with local JSON storage.
 
 ```bash
 HOST=0.0.0.0
+DATA_DIR=/opt/render/project/src
 ADMIN_USERNAME=your-admin-user
 ADMIN_PASSWORD=your-strong-password
 ```
@@ -42,6 +43,14 @@ This repo now includes [render.yaml](C:\Users\pmwau\OneDrive\Documents\Playgroun
 
 - `ADMIN_USERNAME`
 - `ADMIN_PASSWORD`
+
+It also defines `healthCheckPath: /health`, which matches the app's health endpoint.
+
+## Persistent storage note
+
+Render's filesystem is ephemeral by default. The current Blueprint is deployable on the free plan, but uploaded files and saved edits will not survive a redeploy or restart there.
+
+According to Render's current docs, persistent disks are available only on paid web services and are attached from the Render Dashboard. If you upgrade to a paid plan, mount a disk and point `DATA_DIR` at that mount path.
 
 ## Recommended production upgrades
 

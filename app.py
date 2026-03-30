@@ -17,8 +17,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent
-CONTENT_PATH = ROOT / "content" / "site-content.json"
-MEDIA_ROOT = ROOT / "media" / "uploads"
+DATA_ROOT = Path(os.environ.get("DATA_DIR", str(ROOT))).resolve()
+CONTENT_PATH = DATA_ROOT / "content" / "site-content.json"
+MEDIA_ROOT = DATA_ROOT / "media" / "uploads"
 ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME", "")
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "")
 

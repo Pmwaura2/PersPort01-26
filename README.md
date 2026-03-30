@@ -18,6 +18,7 @@ A multi-page engineering portfolio with:
 
 - `PORT`: server port, defaults to `8000`
 - `HOST`: bind host, defaults to `0.0.0.0`
+- `DATA_DIR`: optional root directory for content/media storage
 - `ADMIN_USERNAME`: optional basic auth username for `admin.html` and write APIs
 - `ADMIN_PASSWORD`: optional basic auth password for `admin.html` and write APIs
 

@@ -1,13 +1,17 @@
 services:
   - type: web
     name: peter-mwaura-portfolio
-    env: python
+    runtime: python
     plan: free
-    buildCommand: ""
+    buildCommand: "true"
     startCommand: python app.py
+    healthCheckPath: /health
+    autoDeployTrigger: commit
     envVars:
       - key: HOST
         value: 0.0.0.0
+      - key: DATA_DIR
+        value: /opt/render/project/src
       - key: ADMIN_USERNAME
         sync: false
       - key: ADMIN_PASSWORD
