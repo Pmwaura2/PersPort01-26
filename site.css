@@ -396,6 +396,31 @@ p {
   gap: 20px;
 }
 
+.project-card--media {
+  position: relative;
+  overflow: hidden;
+  grid-template-columns: 1fr;
+  gap: 0;
+  padding: 0;
+  min-height: 460px;
+  align-items: end;
+}
+
+.project-card--media .project-content,
+.project-card--media .project-sidebar {
+  position: relative;
+  z-index: 1;
+  padding: 0 30px;
+}
+
+.project-card--media .project-content {
+  padding-top: 220px;
+}
+
+.project-card--media .project-sidebar {
+  padding-bottom: 30px;
+}
+
 .project-sidebar {
   display: grid;
   gap: 14px;
@@ -441,18 +466,34 @@ p {
   color: var(--text);
 }
 
-.media-frame {
+.media-ambient {
+  position: absolute;
+  inset: 0;
   overflow: hidden;
-  border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at top right, rgba(81, 209, 216, 0.18), transparent 25%),
+    linear-gradient(180deg, rgba(8, 13, 19, 0.05), rgba(8, 13, 19, 0.72));
 }
 
 .media-asset {
   width: 100%;
+  height: 100%;
   display: block;
-  min-height: 220px;
   object-fit: cover;
+  filter: saturate(1.02) brightness(0.8);
+}
+
+.media-embed {
+  border: 0;
+}
+
+.media-ambient__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7, 11, 17, 0.15) 0%, rgba(7, 11, 17, 0.72) 62%, rgba(7, 11, 17, 0.94) 100%),
+    radial-gradient(circle at bottom left, rgba(255, 128, 81, 0.18), transparent 28%);
 }
 
 .admin-layout {

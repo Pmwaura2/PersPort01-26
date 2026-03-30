@@ -11,6 +11,8 @@ import sys
 import urllib.parse
 import uuid
 from io import BytesIO
+from email.parser import BytesParser
+from email.policy import default
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -125,39 +127,24 @@ class PortfolioHandler(BaseHTTPRequestHandler):
 
     def parse_multipart_file(self) -> tuple[str, bytes] | None:
         content_type = self.headers.get("Content-Type", "")
-        match = re.search(r"boundary=(.+)", content_type)
-        if not match:
+        if "multipart/form-data" not in content_type:
             return None
 
-        boundary = match.group(1).strip().strip('"').encode("utf-8")
         length = int(self.headers.get("Content-Length", "0"))
         body = self.rfile.read(length)
-        delimiter = b"--" + boundary
+        pseudo_message = (
+            f"Content-Type: {content_type}\r\nMIME-Version: 1.0\r\n\r\n".encode("utf-8")
+            + body
+        )
+        message = BytesParser(policy=default).parsebytes(pseudo_message)
 
-        for part in body.split(delimiter):
-            if b'name="file"' not in part:
+        for part in message.iter_parts():
+            if part.get_param("name", header="content-disposition") != "file":
                 continue
 
-            header_end = part.find(b"\r\n\r\n")
-            if header_end == -1:
-                continue
-
-            header_block = part[:header_end].decode("utf-8", "ignore")
-            filename_match = re.search(r'filename="([^"]*)"', header_block)
-            if not filename_match:
-                continue
-
-            filename = Path(filename_match.group(1)).name or "upload.bin"
-            file_bytes = part[header_end + 4 :]
-
-            if file_bytes.endswith(b"\r\n"):
-                file_bytes = file_bytes[:-2]
-            if file_bytes.endswith(b"--"):
-                file_bytes = file_bytes[:-2]
-            if file_bytes.endswith(b"\r\n"):
-                file_bytes = file_bytes[:-2]
-
-            return filename, file_bytes
+            filename = Path(part.get_filename() or "upload.bin").name
+            payload = part.get_payload(decode=True) or b""
+            return filename, payload
 
         return None
 

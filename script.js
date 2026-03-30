@@ -211,8 +211,9 @@ function renderProjects(page) {
     </section>
     <section class="section project-list">
       ${page.items.map((project) => `
-        <article class="panel project-card" data-reveal>
-          <div>
+        <article class="panel project-card ${project.mediaUrl ? "project-card--media" : ""}" data-reveal>
+          ${renderProjectMedia(project)}
+          <div class="project-content">
             <p class="eyebrow">${escapeHtml(project.eyebrow)}</p>
             <h3>${escapeHtml(project.title)}</h3>
             <p>${escapeHtml(project.description)}</p>
@@ -221,7 +222,6 @@ function renderProjects(page) {
             </ul>
           </div>
           <aside class="project-sidebar">
-            ${renderProjectMedia(project)}
             <div class="mini-card">
               <span class="meta">Role</span>
               <strong>${escapeHtml(project.role)}</strong>
@@ -274,21 +274,92 @@ function renderProjectMedia(project) {
     return "";
   }
 
-  if (project.mediaType === "video") {
+  const media = resolveMedia(project.mediaUrl, project.mediaType, project.mediaPoster);
+
+  if (media.kind === "embed") {
     return `
-      <div class="media-frame">
-        <video class="media-asset" controls preload="metadata" poster="${escapeHtml(project.mediaPoster || "")}">
-          <source src="${escapeHtml(project.mediaUrl)}" />
+      <div class="media-ambient">
+        <iframe
+          class="media-asset media-embed"
+          src="${escapeHtml(media.url)}"
+          title="${escapeHtml(project.title)} showcase"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <div class="media-ambient__overlay"></div>
+      </div>
+    `;
+  }
+
+  if (media.kind === "video") {
+    return `
+      <div class="media-ambient">
+        <video class="media-asset" autoplay muted loop playsinline controls poster="${escapeHtml(media.poster || "")}">
+          <source src="${escapeHtml(media.url)}" />
         </video>
+        <div class="media-ambient__overlay"></div>
       </div>
     `;
   }
 
   return `
-    <div class="media-frame">
-      <img class="media-asset" src="${escapeHtml(project.mediaUrl)}" alt="${escapeHtml(project.title)} showcase" />
+    <div class="media-ambient">
+      <img class="media-asset" src="${escapeHtml(media.url)}" alt="${escapeHtml(project.title)} showcase" />
+      <div class="media-ambient__overlay"></div>
     </div>
   `;
+}
+
+function resolveMedia(url, type, poster) {
+  const normalized = String(url || "").trim();
+  const youtubeId = extractYouTubeId(normalized);
+  if (youtubeId) {
+    return {
+      kind: "embed",
+      url: `https://www.youtube.com/embed/${youtubeId}`
+    };
+  }
+
+  const vimeoMatch = normalized.match(/vimeo\.com\/(\d+)/);
+  if (vimeoMatch) {
+    return {
+      kind: "embed",
+      url: `https://player.vimeo.com/video/${vimeoMatch[1]}`
+    };
+  }
+
+  if (type === "video" || /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(normalized)) {
+    return {
+      kind: "video",
+      url: normalized,
+      poster
+    };
+  }
+
+  return {
+    kind: "image",
+    url: normalized
+  };
+}
+
+function extractYouTubeId(url) {
+  const shortMatch = url.match(/youtu\.be\/([A-Za-z0-9_-]{6,})/);
+  if (shortMatch) {
+    return shortMatch[1];
+  }
+
+  const standardMatch = url.match(/[?&]v=([A-Za-z0-9_-]{6,})/);
+  if (standardMatch) {
+    return standardMatch[1];
+  }
+
+  const embedMatch = url.match(/youtube\.com\/embed\/([A-Za-z0-9_-]{6,})/);
+  if (embedMatch) {
+    return embedMatch[1];
+  }
+
+  return "";
 }
 
 function applyBackground(background) {
