@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import cgi
 import base64
 import json
 import mimetypes
@@ -11,6 +10,7 @@ import shutil
 import sys
 import urllib.parse
 import uuid
+from io import BytesIO
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -104,29 +104,62 @@ class PortfolioHandler(BaseHTTPRequestHandler):
         self.send_json({"ok": True})
 
     def handle_upload(self) -> None:
-        form = cgi.FieldStorage(
-            fp=self.rfile,
-            headers=self.headers,
-            environ={
-                "REQUEST_METHOD": "POST",
-                "CONTENT_TYPE": self.headers.get("Content-Type", ""),
-            },
-        )
-
-        file_item = form["file"] if "file" in form else None
-        if not file_item or not getattr(file_item, "file", None):
+        uploaded = self.parse_multipart_file()
+        if not uploaded:
             self.send_json({"error": "No file uploaded."}, status=HTTPStatus.BAD_REQUEST)
             return
 
-        original_name = Path(file_item.filename or "upload.bin").name
+        original_name, file_bytes = uploaded
+        if not file_bytes:
+            self.send_json({"error": "Uploaded file was empty."}, status=HTTPStatus.BAD_REQUEST)
+            return
+
         safe_name = re.sub(r"[^A-Za-z0-9._-]", "-", original_name)
         target_name = f"{uuid.uuid4().hex[:8]}-{safe_name}"
         target_path = MEDIA_ROOT / target_name
 
         with target_path.open("wb") as destination:
-            shutil.copyfileobj(file_item.file, destination)
+            shutil.copyfileobj(BytesIO(file_bytes), destination)
 
         self.send_json({"ok": True, "path": f"/media/uploads/{target_name}"})
+
+    def parse_multipart_file(self) -> tuple[str, bytes] | None:
+        content_type = self.headers.get("Content-Type", "")
+        match = re.search(r"boundary=(.+)", content_type)
+        if not match:
+            return None
+
+        boundary = match.group(1).strip().strip('"').encode("utf-8")
+        length = int(self.headers.get("Content-Length", "0"))
+        body = self.rfile.read(length)
+        delimiter = b"--" + boundary
+
+        for part in body.split(delimiter):
+            if b'name="file"' not in part:
+                continue
+
+            header_end = part.find(b"\r\n\r\n")
+            if header_end == -1:
+                continue
+
+            header_block = part[:header_end].decode("utf-8", "ignore")
+            filename_match = re.search(r'filename="([^"]*)"', header_block)
+            if not filename_match:
+                continue
+
+            filename = Path(filename_match.group(1)).name or "upload.bin"
+            file_bytes = part[header_end + 4 :]
+
+            if file_bytes.endswith(b"\r\n"):
+                file_bytes = file_bytes[:-2]
+            if file_bytes.endswith(b"--"):
+                file_bytes = file_bytes[:-2]
+            if file_bytes.endswith(b"\r\n"):
+                file_bytes = file_bytes[:-2]
+
+            return filename, file_bytes
+
+        return None
 
     def serve_static(self, request_path: str) -> None:
         route = request_path
