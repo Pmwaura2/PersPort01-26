@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peter Mwaura Studio | Intro</title>
+    <meta
+      name="description"
+      content="A multi-page engineering portfolio with an editable backend and media-rich presentation."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./site.css" />
+  </head>
+  <body data-page="intro">
+    <div class="page-transition" aria-hidden="true">
+      <div class="page-transition__logo">P/M</div>
+    </div>
+    <div class="page-media-bg" id="page-media-bg" aria-hidden="true"></div>
+
+    <div class="page-shell">
+      <header class="site-header" data-reveal>
+        <a class="brand" id="brand-link" href="./index.html">P/M</a>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a data-nav="intro" href="./index.html">Intro</a>
+          <a data-nav="about" href="./about.html">About Me</a>
+          <a data-nav="interests" href="./interests.html">Interests</a>
+          <a data-nav="projects" href="./projects.html">Projects</a>
+          <a data-nav="contact" href="./contact.html">Contact</a>
+          <a href="./admin.html">Admin</a>
+        </nav>
+      </header>
+
+      <main id="page-content"></main>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

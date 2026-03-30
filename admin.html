@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peter Mwaura Studio | Admin</title>
+    <meta
+      name="description"
+      content="Browser-based admin editor for the Peter Mwaura portfolio."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./site.css" />
+  </head>
+  <body data-page="admin">
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="./index.html">P/M</a>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="./index.html">View Site</a>
+        </nav>
+      </header>
+
+      <main class="admin-layout">
+        <section class="panel">
+          <p class="eyebrow">Admin</p>
+          <h1>Editable Website Backend</h1>
+          <p class="lede">
+            Edit the portfolio using forms instead of touching page files. Save
+            once here and the public pages will pull the latest content
+            automatically.
+          </p>
+          <div class="admin-actions">
+            <button class="button button-primary" id="save-content" type="button">Save Content</button>
+            <button class="button button-ghost" id="reload-content" type="button">Reload From Server</button>
+          </div>
+          <p class="admin-status" id="admin-status">Loading content...</p>
+        </section>
+
+        <section class="panel">
+          <p class="eyebrow">Upload Media</p>
+          <h2>Images and videos</h2>
+          <p>Upload a file, then paste the returned path into a page background or project showcase field.</p>
+          <div class="upload-row">
+            <input id="media-file" type="file" />
+            <button class="button button-ghost" id="upload-media" type="button">Upload File</button>
+          </div>
+          <textarea id="upload-result" class="json-editor json-editor-small" readonly></textarea>
+        </section>
+
+        <form class="admin-form-grid" id="admin-form">
+          <section class="panel">
+            <p class="eyebrow">Site Identity</p>
+            <div class="field-grid field-grid-2">
+              <label class="field">
+                <span>Name</span>
+                <input id="site-name" type="text" />
+              </label>
+              <label class="field">
+                <span>Brand</span>
+                <input id="site-brand" type="text" />
+              </label>
+              <label class="field">
+                <span>Role</span>
+                <input id="site-role" type="text" />
+              </label>
+              <label class="field">
+                <span>Location</span>
+                <input id="site-location" type="text" />
+              </label>
+              <label class="field">
+                <span>Email</span>
+                <input id="site-email" type="email" />
+              </label>
+              <label class="field">
+                <span>Availability</span>
+                <input id="site-availability" type="text" />
+              </label>
+              <label class="field">
+                <span>LinkedIn</span>
+                <input id="site-linkedin" type="url" />
+              </label>
+              <label class="field">
+                <span>GitHub</span>
+                <input id="site-github" type="url" />
+              </label>
+              <label class="field field-full">
+                <span>Resume URL</span>
+                <input id="site-resume" type="text" />
+              </label>
+            </div>
+          </section>
+
+          <section class="panel">
+            <p class="eyebrow">Intro Page</p>
+            <div class="field-grid field-grid-2">
+              <label class="field">
+                <span>Eyebrow</span>
+                <input id="intro-eyebrow" type="text" />
+              </label>
+              <label class="field">
+                <span>Overview Title</span>
+                <input id="intro-overview-title" type="text" />
+              </label>
+              <label class="field">
+                <span>Title</span>
+                <input id="intro-title" type="text" />
+              </label>
+              <label class="field">
+                <span>Accent Title</span>
+                <input id="intro-title-accent" type="text" />
+              </label>
+              <label class="field field-full">
+                <span>Lede</span>
+                <textarea id="intro-lede"></textarea>
+              </label>
+              <label class="field">
+                <span>Primary CTA Label</span>
+                <input id="intro-primary-label" type="text" />
+              </label>
+              <label class="field">
+                <span>Primary CTA Link</span>
+                <input id="intro-primary-href" type="text" />
+              </label>
+              <label class="field">
+                <span>Secondary CTA Label</span>
+                <input id="intro-secondary-label" type="text" />
+              </label>
+              <label class="field">
+                <span>Secondary CTA Link</span>
+                <input id="intro-secondary-href" type="text" />
+              </label>
+              <label class="field field-full">
+                <span>Recruiter Section Body</span>
+                <textarea id="intro-recruiter-body"></textarea>
+              </label>
+              <label class="field">
+                <span>Background Type</span>
+                <select id="intro-bg-type">
+                  <option value="none">None</option>
+                  <option value="image">Image</option>
+                  <option value="video">Video</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Background URL</span>
+                <input id="intro-bg-url" type="text" />
+              </label>
+            </div>
+          </section>
+
+          <section class="panel">
+            <p class="eyebrow">About Page</p>
+            <div class="field-grid">
+              <label class="field">
+                <span>Title</span>
+                <input id="about-title" type="text" />
+              </label>
+              <label class="field">
+                <span>Lede</span>
+                <textarea id="about-lede"></textarea>
+              </label>
+              <label class="field">
+                <span>Working Style Heading</span>
+                <input id="about-working-title" type="text" />
+              </label>
+              <label class="field">
+                <span>Working Style Paragraphs</span>
+                <textarea id="about-paragraphs" placeholder="One paragraph per line break pair"></textarea>
+              </label>
+              <label class="field">
+                <span>Recruiter Notes</span>
+                <textarea id="about-notes" placeholder="One note per line"></textarea>
+              </label>
+              <label class="field">
+                <span>Quote</span>
+                <textarea id="about-quote"></textarea>
+              </label>
+              <label class="field">
+                <span>Quote Body</span>
+                <textarea id="about-quote-body"></textarea>
+              </label>
+            </div>
+          </section>
+
+          <section class="panel">
+            <p class="eyebrow">Interests Page</p>
+            <div class="field-grid">
+              <label class="field">
+                <span>Title</span>
+                <input id="interests-title" type="text" />
+              </label>
+              <label class="field">
+                <span>Lede</span>
+                <textarea id="interests-lede"></textarea>
+              </label>
+              <label class="field">
+                <span>Favorite Problem Types</span>
+                <textarea id="interests-favorites" placeholder="One item per line"></textarea>
+              </label>
+              <label class="field">
+                <span>Outside The Classroom</span>
+                <textarea id="interests-outside" placeholder="One paragraph per blank-line break"></textarea>
+              </label>
+            </div>
+            <div id="interest-cards" class="stack-builder"></div>
+            <button class="button button-ghost" id="add-interest-card" type="button">Add Interest Card</button>
+          </section>
+
+          <section class="panel">
+            <p class="eyebrow">Projects</p>
+            <div class="field-grid">
+              <label class="field">
+                <span>Page Title</span>
+                <input id="projects-title" type="text" />
+              </label>
+              <label class="field">
+                <span>Page Lede</span>
+                <textarea id="projects-lede"></textarea>
+              </label>
+            </div>
+            <div id="projects-list" class="stack-builder"></div>
+            <button class="button button-ghost" id="add-project" type="button">Add Project</button>
+          </section>
+
+          <section class="panel">
+            <p class="eyebrow">Contact</p>
+            <div class="field-grid field-grid-2">
+              <label class="field">
+                <span>Title</span>
+                <input id="contact-title" type="text" />
+              </label>
+              <label class="field">
+                <span>Lede</span>
+                <textarea id="contact-lede"></textarea>
+              </label>
+              <label class="field">
+                <span>Reach Out Heading</span>
+                <input id="contact-reach-title" type="text" />
+              </label>
+              <label class="field">
+                <span>Reach Out Body</span>
+                <textarea id="contact-reach-body"></textarea>
+              </label>
+              <label class="field">
+                <span>Primary Button Label</span>
+                <input id="contact-primary-label" type="text" />
+              </label>
+              <label class="field">
+                <span>Primary Button Link</span>
+                <input id="contact-primary-href" type="text" />
+              </label>
+              <label class="field">
+                <span>Secondary Button Label</span>
+                <input id="contact-secondary-label" type="text" />
+              </label>
+              <label class="field">
+                <span>Secondary Button Link</span>
+                <input id="contact-secondary-href" type="text" />
+              </label>
+            </div>
+          </section>
+
+          <section class="panel panel-editor">
+            <p class="eyebrow">JSON Preview</p>
+            <textarea id="content-editor" class="json-editor" spellcheck="false" readonly></textarea>
+          </section>
+        </form>
+      </main>
+    </div>
+
+    <script src="./admin.js"></script>
+  </body>
+</html>

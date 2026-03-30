@@ -1,0 +1,227 @@
+{
+  "site": {
+    "name": "Peter Mwaura",
+    "brand": "P/M",
+    "role": "Engineering Student | Creative Technologist",
+    "email": "peter@example.com",
+    "linkedin": "https://www.linkedin.com/",
+    "github": "https://github.com/",
+    "resumeUrl": "/media/resume/Peter-Mwaura-Resume.pdf",
+    "availability": "Open to Summer 2026 recruiting",
+    "location": "United States"
+  },
+  "pages": {
+    "intro": {
+      "eyebrow": "Engineering Student | Creative Technologist",
+      "title": "A portfolio that feels",
+      "titleAccent": "more like a product launch.",
+      "lede": "I am Peter Mwaura, an engineering student who builds across code, hardware, and storytelling. I like work that blends technical rigor with clear communication and memorable product thinking.",
+      "primaryCtaLabel": "Explore Projects",
+      "primaryCtaHref": "/projects.html",
+      "secondaryCtaLabel": "Meet Peter",
+      "secondaryCtaHref": "/about.html",
+      "overviewTitle": "Studio Overview",
+      "overviewItems": [
+        {
+          "label": "Positioning",
+          "value": "Engineering student with product instincts"
+        },
+        {
+          "label": "Best Fit",
+          "value": "Backend, product engineering, and software internships"
+        },
+        {
+          "label": "Approach",
+          "value": "Prototype quickly, explain clearly, iterate with intent"
+        }
+      ],
+      "recruiterTitle": "Fast Recruiter Read",
+      "recruiterHeading": "I build with range, but I present with focus.",
+      "recruiterBody": "This site is structured like a company website on purpose. Each page isolates a clear story: who I am, what I care about, what I have built, and how I think.",
+      "metrics": [
+        {
+          "value": "12+",
+          "label": "student-led builds"
+        },
+        {
+          "value": "4",
+          "label": "technical disciplines blended"
+        },
+        {
+          "value": "2026",
+          "label": "internship season target"
+        }
+      ],
+      "background": {
+        "type": "none",
+        "url": "",
+        "poster": ""
+      }
+    },
+    "about": {
+      "eyebrow": "About Me",
+      "title": "Built by curiosity, sharpened by iteration.",
+      "lede": "I enjoy being in the middle of messy, real-world problems. I like finding structure, testing quickly, and shaping technical work into something people can trust and understand.",
+      "workingStyleTitle": "I like being the person who turns ambiguity into momentum.",
+      "workingStyleParagraphs": [
+        "My strongest work happens when a team needs both technical depth and clarity. I enjoy translating between disciplines and helping a project stay legible as it grows.",
+        "I care about taste in engineering: not just whether something works, but whether it is easy to maintain, easy to understand, and clearly aligned with the problem it solves."
+      ],
+      "recruiterNotes": [
+        "Comfortable across software and systems thinking",
+        "Strong presentation and documentation habits",
+        "Ownership mindset in student-led teams",
+        "Able to explain technical tradeoffs clearly"
+      ],
+      "education": [
+        {
+          "year": "2024",
+          "title": "B.S. Candidate in Engineering",
+          "description": "Coursework spanning programming, systems design, and human-centered engineering."
+        },
+        {
+          "year": "2025",
+          "title": "Product Engineering Intern",
+          "description": "Built internal tools, supported experiments, and helped shape technical communication."
+        },
+        {
+          "year": "2026",
+          "title": "Design Lead in Student Projects",
+          "description": "Coordinated prototype reviews and pushed ideas from concept to testable systems."
+        }
+      ],
+      "quote": "Great engineering is not only functional. It is legible, adaptable, and persuasive.",
+      "quoteBody": "That is the lens I bring to every project, whether I am writing backend code, building tools, or pitching the outcome.",
+      "background": {
+        "type": "none",
+        "url": "",
+        "poster": ""
+      }
+    },
+    "interests": {
+      "eyebrow": "Interests",
+      "title": "I am drawn to systems that feel alive.",
+      "lede": "The projects I choose are usually shaped by the same themes: automation, interfaces, resilience, scalable infrastructure, and tools that help people make better decisions.",
+      "cards": [
+        {
+          "eyebrow": "Backend Systems",
+          "title": "Infrastructure that stays calm under pressure.",
+          "description": "I enjoy the architecture behind products: APIs, data flow, reliability, and clean service boundaries."
+        },
+        {
+          "eyebrow": "Interfaces",
+          "title": "Clear control surfaces for complex systems.",
+          "description": "Dashboards and admin tools fascinate me because they turn complexity into something intuitive and usable."
+        },
+        {
+          "eyebrow": "Automation",
+          "title": "Engineering that reduces repetitive friction.",
+          "description": "I like building systems that take manual overhead out of a workflow without making the result feel opaque."
+        }
+      ],
+      "favorites": [
+        "Turning raw data into operational insight",
+        "Building first-pass prototypes with clear feedback loops",
+        "Connecting services to thoughtful admin interfaces",
+        "Designing systems that explain themselves well"
+      ],
+      "outsideParagraphs": [
+        "I like dissecting product launches and studying how strong technical teams communicate the value of what they build.",
+        "That is a big reason this portfolio leans into a studio aesthetic: it reflects the type of engineering culture I want to grow in."
+      ],
+      "background": {
+        "type": "none",
+        "url": "",
+        "poster": ""
+      }
+    },
+    "projects": {
+      "eyebrow": "Projects",
+      "title": "Execution across backend, software, and story.",
+      "lede": "These projects are written the way recruiters and hiring managers usually need them: fast to scan, clear on ownership, and specific about what was actually built.",
+      "items": [
+        {
+          "eyebrow": "Featured Build | 2026",
+          "title": "Portfolio CMS and Media Studio",
+          "description": "Built a small editable content system that lets a personal site update from a browser-based admin without manually touching the page files.",
+          "bullets": [
+            "Created a lightweight content API and JSON-backed storage layer",
+            "Built an admin editor for text, media, and page backgrounds",
+            "Connected multi-page public views to shared structured content"
+          ],
+          "role": "Backend design, content modeling, admin tooling",
+          "tech": [
+            "Python",
+            "JSON API",
+            "JavaScript",
+            "HTML/CSS"
+          ],
+          "mediaType": "none",
+          "mediaUrl": "",
+          "mediaPoster": ""
+        },
+        {
+          "eyebrow": "Backend Systems | 2025",
+          "title": "Event and Operations API",
+          "description": "Designed a backend service for managing schedules, registrations, and internal dashboards for a student organization with growing operational needs.",
+          "bullets": [
+            "Modeled the data structure for members, events, and registrations",
+            "Designed API endpoints for admin workflows and reporting",
+            "Focused on maintainability, role separation, and admin usability"
+          ],
+          "role": "Backend architecture, API design, tooling",
+          "tech": [
+            "Python",
+            "REST API",
+            "JSON",
+            "Admin Tools"
+          ],
+          "mediaType": "none",
+          "mediaUrl": "",
+          "mediaPoster": ""
+        },
+        {
+          "eyebrow": "Data + Product | 2025",
+          "title": "Operations Insight Dashboard",
+          "description": "Created a lightweight dashboard experience to turn raw operational data into decisions, with a focus on clarity for non-technical stakeholders.",
+          "bullets": [
+            "Cleaned and structured data for trend visibility",
+            "Framed outputs for quick recruiter and sponsor comprehension",
+            "Balanced interface clarity with engineering detail"
+          ],
+          "role": "Data shaping, dashboard UX, communication",
+          "tech": [
+            "JavaScript",
+            "Visualization",
+            "Metrics",
+            "UI Design"
+          ],
+          "mediaType": "none",
+          "mediaUrl": "",
+          "mediaPoster": ""
+        }
+      ],
+      "background": {
+        "type": "none",
+        "url": "",
+        "poster": ""
+      }
+    },
+    "contact": {
+      "eyebrow": "Contact",
+      "title": "Open to teams that value range, speed, and clarity.",
+      "lede": "I am currently looking for engineering internship opportunities in backend, software, product engineering, or multidisciplinary build teams.",
+      "reachOutTitle": "Let's talk about what your team is building.",
+      "reachOutBody": "If you are hiring for roles where curiosity and execution both matter, I would love to connect.",
+      "primaryButtonLabel": "Email Peter",
+      "primaryButtonHref": "mailto:peter@example.com",
+      "secondaryButtonLabel": "Review Projects",
+      "secondaryButtonHref": "/projects.html",
+      "background": {
+        "type": "none",
+        "url": "",
+        "poster": ""
+      }
+    }
+  }
+}
