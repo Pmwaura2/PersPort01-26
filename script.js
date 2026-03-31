@@ -8,8 +8,7 @@ if (activeNav) {
   activeNav.classList.add("is-active");
 }
 
-fetch("/api/content")
-  .then((response) => response.json())
+loadSiteContent()
   .then((content) => {
     if (brandLink && content.site?.brand) {
       brandLink.textContent = content.site.brand;
@@ -24,6 +23,43 @@ fetch("/api/content")
       pageRoot.innerHTML = `<section class="panel"><p>Could not load content: ${error.message}</p></section>`;
     }
   });
+
+async function loadSiteContent() {
+  const apiResponse = await fetchJson("/api/content");
+  if (apiResponse) {
+    return apiResponse;
+  }
+
+  const staticResponse = await fetchJson("/content/site-content.json");
+  if (staticResponse) {
+    return staticResponse;
+  }
+
+  throw new Error("No content source was available.");
+}
+
+async function fetchJson(url) {
+  try {
+    const response = await fetch(url, {
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const contentType = response.headers.get("content-type") || "";
+    if (!contentType.includes("application/json")) {
+      return null;
+    }
+
+    return await response.json();
+  } catch (error) {
+    return null;
+  }
+}
 
 function renderPage(content) {
   if (!pageRoot) {

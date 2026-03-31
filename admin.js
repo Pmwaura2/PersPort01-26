@@ -54,12 +54,27 @@ const inputs = {
 
 async function loadContent() {
   statusLabel.textContent = "Loading content...";
-  const response = await fetch("/api/content");
-  const data = await response.json();
+  const data = await loadAdminContent();
   currentContent = data;
   populateForm(data);
   syncPreview();
-  statusLabel.textContent = "Content loaded.";
+  statusLabel.textContent = isHostedVercel()
+    ? "Content loaded. This hosted admin is read-only until persistent storage is connected."
+    : "Content loaded.";
+}
+
+async function loadAdminContent() {
+  const apiResponse = await fetchJson("/api/content");
+  if (apiResponse) {
+    return apiResponse;
+  }
+
+  const staticResponse = await fetchJson("/content/site-content.json");
+  if (staticResponse) {
+    return staticResponse;
+  }
+
+  throw new Error("No content source was available.");
 }
 
 function populateForm(content) {
@@ -378,6 +393,29 @@ async function uploadMedia() {
   }
 
   uploadResult.value = result.path;
+}
+
+async function fetchJson(url) {
+  const response = await fetch(url, {
+    headers: {
+      Accept: "application/json"
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error(`Request failed with ${response.status}.`);
+  }
+
+  const contentType = response.headers.get("content-type") || "";
+  if (!contentType.includes("application/json")) {
+    throw new Error("Server returned a non-JSON response.");
+  }
+
+  return response.json();
+}
+
+function isHostedVercel() {
+  return window.location.hostname.endsWith(".vercel.app") || window.location.hostname === "petermwaura.com" || window.location.hostname === "www.petermwaura.com";
 }
 
 function splitLines(value) {
