@@ -20,6 +20,9 @@ export async function POST(request) {
 
     return Response.json({ ok: true, path: blob.url });
   } catch (error) {
-    return Response.json({ error: "Upload failed." }, { status: 500 });
+    return Response.json(
+      { error: error instanceof Error ? error.message : "Upload failed." },
+      { status: 500 }
+    );
   }
 }

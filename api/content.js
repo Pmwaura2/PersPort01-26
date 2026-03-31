@@ -4,7 +4,10 @@ export async function GET() {
   try {
     return Response.json(await loadContentPayload());
   } catch (error) {
-    return Response.json({ error: "Content unavailable." }, { status: 500 });
+    return Response.json(
+      { error: error instanceof Error ? error.message : "Content unavailable." },
+      { status: 500 }
+    );
   }
 }
 
@@ -22,6 +25,9 @@ export async function POST(request) {
     await saveContentPayload(payload);
     return Response.json({ ok: true });
   } catch (error) {
-    return Response.json({ error: "Save failed." }, { status: 500 });
+    return Response.json(
+      { error: error instanceof Error ? error.message : "Save failed." },
+      { status: 500 }
+    );
   }
 }
