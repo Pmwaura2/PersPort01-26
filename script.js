@@ -20,7 +20,7 @@ loadSiteContent()
   })
   .catch((error) => {
     if (pageRoot) {
-      pageRoot.innerHTML = `<section class="panel"><p>Could not load content: ${error.message}</p></section>`;
+      pageRoot.innerHTML = `<section class="panel"><p>Content is temporarily unavailable.</p></section>`;
     }
   });
 
@@ -68,7 +68,7 @@ function renderPage(content) {
 
   const page = content.pages?.[currentPage];
   if (!page) {
-    pageRoot.innerHTML = `<section class="panel"><p>Missing content for ${escapeHtml(currentPage)}.</p></section>`;
+    pageRoot.innerHTML = `<section class="panel"><p>This page is temporarily unavailable.</p></section>`;
     return;
   }
 
@@ -91,7 +91,7 @@ function renderPage(content) {
       pageRoot.innerHTML = renderContact(content.site, page);
       break;
     default:
-      pageRoot.innerHTML = `<section class="panel"><p>Unknown page.</p></section>`;
+      pageRoot.innerHTML = `<section class="panel"><p>This page is temporarily unavailable.</p></section>`;
   }
 }
 

@@ -28,11 +28,11 @@ form.addEventListener("submit", async (event) => {
 
     const result = await response.json();
     if (!response.ok) {
-      throw new Error(result.error || "Login failed.");
+      throw new Error(result.error || "Access denied.");
     }
 
     window.location.href = nextPath;
   } catch (error) {
-    statusLabel.textContent = error.message;
+    statusLabel.textContent = "Access denied.";
   }
 });

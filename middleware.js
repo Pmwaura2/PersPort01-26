@@ -17,7 +17,7 @@ export default async function middleware(request) {
   }
 
   if (!isAdminAuthConfigured()) {
-    return unauthorizedResponse(request, "Admin authentication is not configured on this deployment.");
+    return unauthorizedResponse(request, "Sign-in required.");
   }
 
   const cookieHeader = request.headers.get("cookie") || "";
@@ -27,7 +27,7 @@ export default async function middleware(request) {
     return;
   }
 
-  return unauthorizedResponse(request, "Authentication required.");
+  return unauthorizedResponse(request, "Sign-in required.");
 }
 
 function unauthorizedResponse(request, message) {

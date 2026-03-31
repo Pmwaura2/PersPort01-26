@@ -59,7 +59,7 @@ async function loadContent() {
   populateForm(data);
   syncPreview();
   statusLabel.textContent = isHostedVercel()
-    ? "Content loaded. This hosted admin is read-only until persistent storage is connected."
+    ? "View mode is ready."
     : "Content loaded.";
 }
 
@@ -74,7 +74,7 @@ async function loadAdminContent() {
     return staticResponse;
   }
 
-  throw new Error("No content source was available.");
+  throw new Error("Content unavailable.");
 }
 
 function populateForm(content) {
@@ -365,15 +365,15 @@ async function saveContent() {
 
     currentContent = payload;
     syncPreview();
-    statusLabel.textContent = "Saved. Public pages will use this content on refresh.";
+    statusLabel.textContent = "Saved.";
   } catch (error) {
-    statusLabel.textContent = `Save failed: ${error.message}`;
+    statusLabel.textContent = "Save unavailable on this deployment.";
   }
 }
 
 async function uploadMedia() {
   if (!fileInput.files.length) {
-    uploadResult.value = "Choose a file first.";
+    uploadResult.value = "Select a file first.";
     return;
   }
 
@@ -388,7 +388,7 @@ async function uploadMedia() {
 
   const result = await response.json();
   if (!response.ok) {
-    uploadResult.value = result.error || "Upload failed.";
+    uploadResult.value = "Upload unavailable on this deployment.";
     return;
   }
 
@@ -403,12 +403,12 @@ async function fetchJson(url) {
   });
 
   if (!response.ok) {
-    throw new Error(`Request failed with ${response.status}.`);
+    throw new Error("Request unavailable.");
   }
 
   const contentType = response.headers.get("content-type") || "";
   if (!contentType.includes("application/json")) {
-    throw new Error("Server returned a non-JSON response.");
+    throw new Error("Content unavailable.");
   }
 
   return response.json();
@@ -472,5 +472,5 @@ document.getElementById("add-project").addEventListener("click", () => {
 });
 
 loadContent().catch((error) => {
-  statusLabel.textContent = `Could not load content: ${error.message}`;
+  statusLabel.textContent = "Editor unavailable right now.";
 });

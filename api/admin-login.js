@@ -12,9 +12,7 @@ export default async function handler(request, response) {
   }
 
   if (!isAdminAuthConfigured()) {
-    response.status(503).json({
-      error: "Set ADMIN_USERNAME, ADMIN_PASSWORD, and ADMIN_SESSION_SECRET in Vercel before using hosted admin login."
-    });
+    response.status(503).json({ error: "Sign-in unavailable." });
     return;
   }
 
@@ -25,7 +23,7 @@ export default async function handler(request, response) {
   const password = String(body.password || "");
 
   if (username !== expectedUsername || password !== expectedPassword) {
-    response.status(401).json({ error: "Invalid admin credentials." });
+    response.status(401).json({ error: "Access denied." });
     return;
   }
 
