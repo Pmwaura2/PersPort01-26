@@ -21,6 +21,7 @@ A multi-page engineering portfolio with:
 - `DATA_DIR`: optional root directory for content/media storage
 - `ADMIN_USERNAME`: optional basic auth username for `admin.html` and write APIs
 - `ADMIN_PASSWORD`: optional basic auth password for `admin.html` and write APIs
+- `ADMIN_SESSION_SECRET`: signed-session secret for hosted Vercel admin protection
 
 ## How Editing Works
 

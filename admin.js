@@ -451,6 +451,15 @@ document.querySelectorAll("input, textarea, select").forEach((element) => {
 document.getElementById("save-content").addEventListener("click", saveContent);
 document.getElementById("reload-content").addEventListener("click", loadContent);
 document.getElementById("upload-media").addEventListener("click", uploadMedia);
+document.getElementById("logout-admin").addEventListener("click", async () => {
+  try {
+    await fetch("/api/admin-logout", {
+      method: "POST"
+    });
+  } finally {
+    window.location.href = "/admin-login.html";
+  }
+});
 
 document.getElementById("add-interest-card").addEventListener("click", () => {
   interestCardsRoot.appendChild(buildInterestCard());
