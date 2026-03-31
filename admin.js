@@ -59,7 +59,7 @@ async function loadContent() {
   populateForm(data);
   syncPreview();
   statusLabel.textContent = isHostedVercel()
-    ? "View mode is ready."
+    ? "Editor ready."
     : "Content loaded.";
 }
 
@@ -367,7 +367,7 @@ async function saveContent() {
     syncPreview();
     statusLabel.textContent = "Saved.";
   } catch (error) {
-    statusLabel.textContent = "Save unavailable on this deployment.";
+    statusLabel.textContent = error.message || "Save failed.";
   }
 }
 
@@ -388,7 +388,7 @@ async function uploadMedia() {
 
   const result = await response.json();
   if (!response.ok) {
-    uploadResult.value = "Upload unavailable on this deployment.";
+    uploadResult.value = result.error || "Upload failed.";
     return;
   }
 
@@ -472,5 +472,5 @@ document.getElementById("add-project").addEventListener("click", () => {
 });
 
 loadContent().catch((error) => {
-  statusLabel.textContent = "Editor unavailable right now.";
+  statusLabel.textContent = error.message || "Editor unavailable right now.";
 });
