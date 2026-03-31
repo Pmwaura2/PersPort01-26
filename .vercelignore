@@ -5,3 +5,4 @@ runtime.txt
 render.yaml
 __pycache__/
 .vercel/python/
+.vercel-disabled/

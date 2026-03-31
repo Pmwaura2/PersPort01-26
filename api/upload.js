@@ -1,3 +1,3 @@
-export default async function handler(request, response) {
-  response.status(501).json({ error: "Uploads are unavailable here." });
+export function POST() {
+  return Response.json({ error: "Uploads are unavailable here." }, { status: 501 });
 }
