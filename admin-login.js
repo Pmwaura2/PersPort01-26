@@ -33,6 +33,6 @@ form.addEventListener("submit", async (event) => {
 
     window.location.href = nextPath;
   } catch (error) {
-    statusLabel.textContent = "Access denied.";
+    statusLabel.textContent = error.message || "Access denied.";
   }
 });
