@@ -537,6 +537,8 @@ function applyMediaToTarget(url) {
     return;
   }
 
+  syncRelatedMediaType(activeMediaTarget, url);
+
   if (activeMediaTarget.tagName === "TEXTAREA" && activeMediaTarget.dataset.field === "mediaItems") {
     activeMediaTarget.value = appendMediaLine(activeMediaTarget.value, url);
   } else {
@@ -564,6 +566,34 @@ function appendMediaLine(currentValue, url) {
   return `${value}\n${url}`;
 }
 
+function syncRelatedMediaType(target, url) {
+  const type = inferMediaType(url);
+
+  if (target.dataset.field === "mediaUrl") {
+    const card = target.closest(".stack-card");
+    const typeSelect = card?.querySelector('[data-field="mediaType"]');
+    if (typeSelect) {
+      typeSelect.value = type;
+      typeSelect.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+    return;
+  }
+
+  const backgroundTypeMap = new Map([
+    ["intro-bg-url", inputs.introBgType],
+    ["about-bg-url", inputs.aboutBgType],
+    ["interests-bg-url", inputs.interestsBgType],
+    ["projects-bg-url", inputs.projectsBgType],
+    ["contact-bg-url", inputs.contactBgType]
+  ]);
+
+  const relatedTypeInput = backgroundTypeMap.get(target.id);
+  if (relatedTypeInput) {
+    relatedTypeInput.value = type;
+    relatedTypeInput.dispatchEvent(new Event("change", { bubbles: true }));
+  }
+}
+
 function registerMediaTargetListeners(root = document) {
   root.querySelectorAll("[data-media-target]").forEach((element) => {
     if (element.dataset.mediaTargetBound === "true") {
@@ -574,7 +604,7 @@ function registerMediaTargetListeners(root = document) {
     element.addEventListener("focus", activateTarget);
     element.addEventListener("click", () => {
       activateTarget();
-      openMediaPicker();
+      openMediaPicker(element);
     });
     element.dataset.mediaTargetBound = "true";
   });
@@ -623,11 +653,13 @@ function renderMediaPicker() {
   });
 }
 
-function openMediaPicker() {
-  if (!mediaPicker) {
+function openMediaPicker(target = activeMediaTarget) {
+  if (!mediaPicker || !target) {
+    mediaStatus.textContent = "Choose a target field first.";
     return;
   }
 
+  setActiveMediaTarget(target);
   renderMediaPicker();
   mediaPicker.hidden = false;
   document.body.classList.add("is-modal-open");

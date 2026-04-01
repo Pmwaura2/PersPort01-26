@@ -654,6 +654,10 @@ p {
   padding: 20px;
 }
 
+.media-picker[hidden] {
+  display: none !important;
+}
+
 .media-picker__backdrop {
   position: absolute;
   inset: 0;
