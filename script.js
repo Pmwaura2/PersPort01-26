@@ -312,6 +312,16 @@ function renderProjectMedia(project) {
 
   const media = resolveMedia(project.mediaUrl, project.mediaType, project.mediaPoster);
 
+  if (media.kind === "youtube-preview") {
+    return `
+      <div class="media-ambient">
+        <img class="media-asset" src="${escapeHtml(media.poster)}" alt="${escapeHtml(project.title)} preview" />
+        <div class="media-ambient__overlay"></div>
+        <a class="media-watch-link" href="${escapeHtml(media.watchUrl)}" target="_blank" rel="noreferrer">Watch video</a>
+      </div>
+    `;
+  }
+
   if (media.kind === "embed") {
     return `
       <div class="media-ambient">
@@ -352,8 +362,9 @@ function resolveMedia(url, type, poster) {
   const youtubeId = extractYouTubeId(normalized);
   if (youtubeId) {
     return {
-      kind: "embed",
-      url: `https://www.youtube.com/embed/${youtubeId}`
+      kind: "youtube-preview",
+      poster: `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`,
+      watchUrl: normalized
     };
   }
 

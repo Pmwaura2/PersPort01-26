@@ -402,8 +402,24 @@ p {
   grid-template-columns: 1fr;
   gap: 0;
   padding: 0;
-  min-height: 460px;
+  min-height: 520px;
   align-items: end;
+}
+
+.project-card--media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 16% 16%, rgba(81, 209, 216, 0.16), transparent 24%),
+    radial-gradient(circle at 84% 84%, rgba(255, 128, 81, 0.18), transparent 24%);
+  z-index: 0;
+}
+
+.project-card--media .project-content {
+  display: grid;
+  align-content: end;
+  gap: 8px;
 }
 
 .project-card--media .project-content,
@@ -414,7 +430,7 @@ p {
 }
 
 .project-card--media .project-content {
-  padding-top: 220px;
+  padding-top: 290px;
 }
 
 .project-card--media .project-sidebar {
@@ -481,7 +497,8 @@ p {
   height: 100%;
   display: block;
   object-fit: cover;
-  filter: saturate(1.02) brightness(0.8);
+  transform: scale(1.04);
+  filter: saturate(1.02) brightness(0.62) blur(1px);
 }
 
 .media-embed {
@@ -492,8 +509,27 @@ p {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(7, 11, 17, 0.15) 0%, rgba(7, 11, 17, 0.72) 62%, rgba(7, 11, 17, 0.94) 100%),
+    linear-gradient(180deg, rgba(7, 11, 17, 0.04) 0%, rgba(7, 11, 17, 0.48) 36%, rgba(7, 11, 17, 0.9) 72%, rgba(7, 11, 17, 0.98) 100%),
+    linear-gradient(90deg, rgba(7, 11, 17, 0.48) 0%, rgba(7, 11, 17, 0.1) 42%, rgba(7, 11, 17, 0.42) 100%),
     radial-gradient(circle at bottom left, rgba(255, 128, 81, 0.18), transparent 28%);
+}
+
+.media-watch-link {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--text);
+  background: rgba(5, 10, 16, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(12px);
 }
 
 .admin-layout {
@@ -641,6 +677,14 @@ p {
     padding: 34px;
   }
 
+  .project-card--media {
+    min-height: 460px;
+  }
+
+  .project-card--media .project-content {
+    padding-top: 250px;
+  }
+
   .field-grid-2 {
     grid-template-columns: 1fr;
   }
@@ -660,6 +704,16 @@ p {
 
   .nav-links {
     gap: 10px;
+  }
+
+  .project-card--media .project-content,
+  .project-card--media .project-sidebar {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .project-card--media .project-content {
+    padding-top: 220px;
   }
 
   h1 {
