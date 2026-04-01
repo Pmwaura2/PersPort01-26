@@ -352,9 +352,17 @@ function parseMediaItems(value) {
     .map((line) => line.trim())
     .filter(Boolean)
     .map((line) => {
+      if (!line.includes("|")) {
+        return {
+          type: inferMediaType(line),
+          url: line,
+          poster: ""
+        };
+      }
+
       const [type = "", url = "", poster = ""] = line.split("|").map((item) => item.trim());
       return {
-        type: type || "image",
+        type: type || inferMediaType(url),
         url,
         poster
       };
@@ -365,15 +373,38 @@ function parseMediaItems(value) {
 function formatMediaItems(project) {
   if (Array.isArray(project.mediaItems) && project.mediaItems.length) {
     return project.mediaItems
-      .map((item) => [item.type || "image", item.url || "", item.poster || ""].join("|").replace(/\|$/, ""))
+      .map((item) => {
+        const type = item.type || inferMediaType(item.url || "");
+        const poster = item.poster || "";
+        return [type, item.url || "", poster].join("|").replace(/\|$/, "");
+      })
       .join("\n");
   }
 
   if (project.mediaUrl) {
-    return [project.mediaType || "image", project.mediaUrl, project.mediaPoster || ""].join("|").replace(/\|$/, "");
+    const type = project.mediaType || inferMediaType(project.mediaUrl);
+    return [type, project.mediaUrl, project.mediaPoster || ""].join("|").replace(/\|$/, "");
   }
 
   return "";
+}
+
+function inferMediaType(url) {
+  const normalized = String(url || "").trim().toLowerCase();
+  if (!normalized) {
+    return "image";
+  }
+
+  if (
+    normalized.includes("youtube.com") ||
+    normalized.includes("youtu.be") ||
+    normalized.includes("vimeo.com") ||
+    /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(normalized)
+  ) {
+    return "video";
+  }
+
+  return "image";
 }
 
 function syncPreview() {
