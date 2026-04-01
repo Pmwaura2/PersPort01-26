@@ -17,6 +17,7 @@ loadSiteContent()
     renderPage(content);
     wirePageTransitions();
     setupReveal();
+    setupProjectMediaWindows();
   })
   .catch((error) => {
     if (pageRoot) {
@@ -246,28 +247,7 @@ function renderProjects(page) {
       </div>
     </section>
     <section class="section project-list">
-      ${page.items.map((project) => `
-        <article class="panel project-card ${project.mediaUrl ? "project-card--media" : ""}" data-reveal>
-          ${renderProjectMedia(project)}
-          <div class="project-content">
-            <p class="eyebrow">${escapeHtml(project.eyebrow)}</p>
-            <h3>${escapeHtml(project.title)}</h3>
-            <p>${escapeHtml(project.description)}</p>
-            <ul class="list-clean">
-              ${project.bullets.map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join("")}
-            </ul>
-          </div>
-          <aside class="project-sidebar">
-            <div class="mini-card">
-              <span class="meta">Role</span>
-              <strong>${escapeHtml(project.role)}</strong>
-            </div>
-            <div class="project-tags">
-              ${project.tech.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
-            </div>
-          </aside>
-        </article>
-      `).join("")}
+      ${page.items.map((project, index) => renderProjectCard(project, index)).join("")}
     </section>
   `;
 }
@@ -305,55 +285,115 @@ function renderContact(site, page) {
   `;
 }
 
-function renderProjectMedia(project) {
-  if (!project.mediaUrl || project.mediaType === "none") {
-    return "";
-  }
+function renderProjectCard(project, index) {
+  const mediaItems = normalizeProjectMedia(project);
 
-  const media = resolveMedia(project.mediaUrl, project.mediaType, project.mediaPoster);
-
-  if (media.kind === "youtube-preview") {
+  if (!mediaItems.length) {
     return `
-      <div class="media-ambient">
-        <img class="media-asset" src="${escapeHtml(media.poster)}" alt="${escapeHtml(project.title)} preview" />
-        <div class="media-ambient__overlay"></div>
-        <a class="media-watch-link" href="${escapeHtml(media.watchUrl)}" target="_blank" rel="noreferrer">Watch video</a>
-      </div>
+      <article class="panel project-card" data-reveal>
+        <div class="project-content">
+          <p class="eyebrow">${escapeHtml(project.eyebrow)}</p>
+          <h3>${escapeHtml(project.title)}</h3>
+          <p>${escapeHtml(project.description)}</p>
+          <ul class="list-clean">
+            ${project.bullets.map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join("")}
+          </ul>
+        </div>
+        <aside class="project-sidebar">
+          <div class="mini-card">
+            <span class="meta">Role</span>
+            <strong>${escapeHtml(project.role)}</strong>
+          </div>
+          <div class="project-tags">
+            ${project.tech.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
+          </div>
+        </aside>
+      </article>
     `;
   }
 
+  return `
+    <article class="panel project-card project-card--gallery" data-reveal>
+      ${renderProjectMediaWindow(project, mediaItems, index)}
+      <div class="project-main">
+        <div class="project-content">
+          <p class="eyebrow">${escapeHtml(project.eyebrow)}</p>
+          <h3>${escapeHtml(project.title)}</h3>
+          <p>${escapeHtml(project.description)}</p>
+          <ul class="list-clean">
+            ${project.bullets.map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join("")}
+          </ul>
+        </div>
+        <aside class="project-sidebar">
+          <div class="mini-card">
+            <span class="meta">Role</span>
+            <strong>${escapeHtml(project.role)}</strong>
+          </div>
+          <div class="project-tags">
+            ${project.tech.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
+          </div>
+        </aside>
+      </div>
+    </article>
+  `;
+}
+
+function renderProjectMediaWindow(project, mediaItems, index) {
+  const windowId = `project-media-${index}`;
+  return `
+    <section class="project-media-panel">
+      <div class="project-media-window">
+        <div class="project-media-track" data-media-track="${windowId}">
+          ${mediaItems.map((item, itemIndex) => renderProjectMediaSlide(project, item, itemIndex)).join("")}
+        </div>
+        ${mediaItems.length > 1 ? `
+          <div class="project-media-controls">
+            <button class="project-media-button" type="button" data-media-prev="${windowId}" aria-label="Previous media">Prev</button>
+            <div class="project-media-dots">
+              ${mediaItems.map((_, itemIndex) => `
+                <button class="project-media-dot ${itemIndex === 0 ? "is-active" : ""}" type="button" data-media-dot="${windowId}" data-media-index="${itemIndex}" aria-label="View media ${itemIndex + 1}"></button>
+              `).join("")}
+            </div>
+            <button class="project-media-button" type="button" data-media-next="${windowId}" aria-label="Next media">Next</button>
+          </div>
+        ` : ""}
+      </div>
+    </section>
+  `;
+}
+
+function renderProjectMediaSlide(project, item, itemIndex) {
+  const media = resolveMedia(item.url, item.type, item.poster);
+
   if (media.kind === "embed") {
     return `
-      <div class="media-ambient">
+      <article class="project-media-slide" data-media-slide="${itemIndex}">
         <iframe
-          class="media-asset media-embed"
+          class="project-media-asset project-media-embed"
           src="${escapeHtml(media.url)}"
-          title="${escapeHtml(project.title)} showcase"
+          title="${escapeHtml(project.title)} media ${itemIndex + 1}"
           loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
-        <div class="media-ambient__overlay"></div>
-      </div>
+      </article>
     `;
   }
 
   if (media.kind === "video") {
     return `
-      <div class="media-ambient">
-        <video class="media-asset" autoplay muted loop playsinline controls poster="${escapeHtml(media.poster || "")}">
+      <article class="project-media-slide" data-media-slide="${itemIndex}">
+        <video class="project-media-asset" playsinline controls preload="metadata" poster="${escapeHtml(media.poster || "")}">
           <source src="${escapeHtml(media.url)}" />
         </video>
-        <div class="media-ambient__overlay"></div>
-      </div>
+      </article>
     `;
   }
 
   return `
-    <div class="media-ambient">
-      <img class="media-asset" src="${escapeHtml(media.url)}" alt="${escapeHtml(project.title)} showcase" />
-      <div class="media-ambient__overlay"></div>
-    </div>
+    <article class="project-media-slide" data-media-slide="${itemIndex}">
+      <img class="project-media-asset" src="${escapeHtml(media.url)}" alt="${escapeHtml(project.title)} media ${itemIndex + 1}" />
+    </article>
   `;
 }
 
@@ -362,9 +402,8 @@ function resolveMedia(url, type, poster) {
   const youtubeId = extractYouTubeId(normalized);
   if (youtubeId) {
     return {
-      kind: "youtube-preview",
-      poster: `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`,
-      watchUrl: normalized
+      kind: "embed",
+      url: `https://www.youtube.com/embed/${youtubeId}`
     };
   }
 
@@ -388,6 +427,30 @@ function resolveMedia(url, type, poster) {
     kind: "image",
     url: normalized
   };
+}
+
+function normalizeProjectMedia(project) {
+  if (Array.isArray(project.mediaItems) && project.mediaItems.length) {
+    return project.mediaItems
+      .map((item) => ({
+        type: String(item.type || "image").trim(),
+        url: String(item.url || "").trim(),
+        poster: String(item.poster || "").trim()
+      }))
+      .filter((item) => item.url);
+  }
+
+  if (project.mediaUrl && project.mediaType && project.mediaType !== "none") {
+    return [
+      {
+        type: project.mediaType,
+        url: project.mediaUrl,
+        poster: project.mediaPoster || ""
+      }
+    ];
+  }
+
+  return [];
 }
 
 function extractYouTubeId(url) {
@@ -468,6 +531,47 @@ function wirePageTransitions() {
         window.location.href = href;
       }, 420);
     });
+  });
+}
+
+function setupProjectMediaWindows() {
+  const tracks = document.querySelectorAll("[data-media-track]");
+
+  tracks.forEach((track) => {
+    const id = track.getAttribute("data-media-track");
+    const prev = document.querySelector(`[data-media-prev="${id}"]`);
+    const next = document.querySelector(`[data-media-next="${id}"]`);
+    const dots = Array.from(document.querySelectorAll(`[data-media-dot="${id}"]`));
+
+    function updateDots() {
+      if (!dots.length) {
+        return;
+      }
+
+      const slideWidth = track.clientWidth || 1;
+      const index = Math.round(track.scrollLeft / slideWidth);
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("is-active", dotIndex === index);
+      });
+    }
+
+    prev?.addEventListener("click", () => {
+      track.scrollBy({ left: -track.clientWidth, behavior: "smooth" });
+    });
+
+    next?.addEventListener("click", () => {
+      track.scrollBy({ left: track.clientWidth, behavior: "smooth" });
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const targetIndex = Number(dot.getAttribute("data-media-index") || "0");
+        track.scrollTo({ left: targetIndex * track.clientWidth, behavior: "smooth" });
+      });
+    });
+
+    track.addEventListener("scroll", updateDots, { passive: true });
+    updateDots();
   });
 }
 

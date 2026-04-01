@@ -174,6 +174,7 @@ function renderProjects(projects) {
 }
 
 function buildProjectCard(project = {}) {
+  const mediaItemsText = formatMediaItems(project);
   const wrapper = document.createElement("article");
   wrapper.className = "stack-card";
   wrapper.innerHTML = `
@@ -213,6 +214,10 @@ function buildProjectCard(project = {}) {
       <label class="field">
         <span>Media Poster</span>
         <input data-field="mediaPoster" type="text" value="${escapeAttribute(project.mediaPoster || "")}" />
+      </label>
+      <label class="field field-full">
+        <span>Media Gallery</span>
+        <textarea data-field="mediaItems" placeholder="One item per line: type|url|poster(optional)">${escapeHtml(mediaItemsText)}</textarea>
       </label>
       <label class="field field-full">
         <span>Bullets</span>
@@ -336,8 +341,39 @@ function collectProjects() {
     tech: splitLines(card.querySelector('[data-field="tech"]').value),
     mediaType: card.querySelector('[data-field="mediaType"]').value,
     mediaUrl: card.querySelector('[data-field="mediaUrl"]').value.trim(),
-    mediaPoster: card.querySelector('[data-field="mediaPoster"]').value.trim()
+    mediaPoster: card.querySelector('[data-field="mediaPoster"]').value.trim(),
+    mediaItems: parseMediaItems(card.querySelector('[data-field="mediaItems"]').value)
   }));
+}
+
+function parseMediaItems(value) {
+  return value
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const [type = "", url = "", poster = ""] = line.split("|").map((item) => item.trim());
+      return {
+        type: type || "image",
+        url,
+        poster
+      };
+    })
+    .filter((item) => item.url);
+}
+
+function formatMediaItems(project) {
+  if (Array.isArray(project.mediaItems) && project.mediaItems.length) {
+    return project.mediaItems
+      .map((item) => [item.type || "image", item.url || "", item.poster || ""].join("|").replace(/\|$/, ""))
+      .join("\n");
+  }
+
+  if (project.mediaUrl) {
+    return [project.mediaType || "image", project.mediaUrl, project.mediaPoster || ""].join("|").replace(/\|$/, "");
+  }
+
+  return "";
 }
 
 function syncPreview() {
