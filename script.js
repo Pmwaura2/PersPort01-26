@@ -18,6 +18,7 @@ loadSiteContent()
     wirePageTransitions();
     setupReveal();
     setupProjectMediaWindows();
+    setupImageFallbacks(document);
   })
   .catch((error) => {
     if (pageRoot) {
@@ -392,7 +393,12 @@ function renderProjectMediaSlide(project, item, itemIndex) {
 
   return `
     <article class="project-media-slide" data-media-slide="${itemIndex}">
-      <img class="project-media-asset" src="${escapeHtml(media.url)}" alt="${escapeHtml(project.title)} media ${itemIndex + 1}" />
+      <img
+        class="project-media-asset"
+        data-resilient-image="true"
+        src="${escapeHtml(media.url)}"
+        alt="${escapeHtml(project.title)} media ${itemIndex + 1}"
+      />
     </article>
   `;
 }
@@ -488,9 +494,69 @@ function applyBackground(background) {
   }
 
   backgroundRoot.innerHTML = `
-    <img class="page-media-bg__asset" src="${escapeHtml(background.url)}" alt="" />
+    <img class="page-media-bg__asset" data-resilient-image="true" src="${escapeHtml(background.url)}" alt="" />
     <div class="page-media-bg__overlay"></div>
   `;
+}
+
+function setupImageFallbacks(root = document) {
+  root.querySelectorAll('img[data-resilient-image="true"]').forEach((image) => {
+    if (image.dataset.fallbackBound === "true") {
+      return;
+    }
+
+    image.addEventListener("error", () => {
+      recoverImage(image);
+    });
+    image.dataset.fallbackBound = "true";
+  });
+}
+
+async function recoverImage(image) {
+  if (!image || image.dataset.fallbackAttempted === "true") {
+    return;
+  }
+
+  image.dataset.fallbackAttempted = "true";
+  const originalUrl = image.getAttribute("src") || "";
+  if (!originalUrl) {
+    return;
+  }
+
+  const encodedUrl = safelyEncodeUrl(originalUrl);
+  if (encodedUrl && encodedUrl !== originalUrl) {
+    image.src = encodedUrl;
+    return;
+  }
+
+  try {
+    const response = await fetch(originalUrl, {
+      mode: "cors",
+      cache: "force-cache"
+    });
+
+    if (!response.ok) {
+      throw new Error("Image request failed.");
+    }
+
+    const blob = await response.blob();
+    const objectUrl = URL.createObjectURL(blob);
+    image.src = objectUrl;
+  } catch (error) {
+    image.alt = "Image unavailable";
+  }
+}
+
+function safelyEncodeUrl(url) {
+  try {
+    return encodeURI(decodeURI(url));
+  } catch (error) {
+    try {
+      return encodeURI(url);
+    } catch (innerError) {
+      return url;
+    }
+  }
 }
 
 function setupReveal() {

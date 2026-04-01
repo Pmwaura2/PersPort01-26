@@ -516,6 +516,7 @@ function renderMediaLibrary() {
     });
   });
 
+  setupImageFallbacks(mediaLibrary);
   renderMediaPicker();
 }
 
@@ -651,6 +652,8 @@ function renderMediaPicker() {
       applyMediaToTarget(url);
     });
   });
+
+  setupImageFallbacks(mediaPickerGrid);
 }
 
 function openMediaPicker(target = activeMediaTarget) {
@@ -683,6 +686,66 @@ function applyLinkToTarget() {
   }
 
   applyMediaToTarget(value);
+}
+
+function setupImageFallbacks(root = document) {
+  root.querySelectorAll('img.media-card__asset').forEach((image) => {
+    if (image.dataset.fallbackBound === "true") {
+      return;
+    }
+
+    image.addEventListener("error", () => {
+      recoverImage(image);
+    });
+    image.dataset.fallbackBound = "true";
+  });
+}
+
+async function recoverImage(image) {
+  if (!image || image.dataset.fallbackAttempted === "true") {
+    return;
+  }
+
+  image.dataset.fallbackAttempted = "true";
+  const originalUrl = image.getAttribute("src") || "";
+  if (!originalUrl) {
+    return;
+  }
+
+  const encodedUrl = safelyEncodeUrl(originalUrl);
+  if (encodedUrl && encodedUrl !== originalUrl) {
+    image.src = encodedUrl;
+    return;
+  }
+
+  try {
+    const response = await fetch(originalUrl, {
+      mode: "cors",
+      cache: "force-cache"
+    });
+
+    if (!response.ok) {
+      throw new Error("Image request failed.");
+    }
+
+    const blob = await response.blob();
+    const objectUrl = URL.createObjectURL(blob);
+    image.src = objectUrl;
+  } catch (error) {
+    image.alt = "Preview unavailable";
+  }
+}
+
+function safelyEncodeUrl(url) {
+  try {
+    return encodeURI(decodeURI(url));
+  } catch (error) {
+    try {
+      return encodeURI(url);
+    } catch (innerError) {
+      return url;
+    }
+  }
 }
 
 function syncPreview() {
