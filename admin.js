@@ -5,6 +5,10 @@ const fileInput = document.getElementById("media-file");
 const mediaStatus = document.getElementById("media-status");
 const mediaLibrary = document.getElementById("media-library");
 const mediaTargetLabel = document.getElementById("media-target-label");
+const mediaPicker = document.getElementById("media-picker");
+const mediaPickerGrid = document.getElementById("media-picker-grid");
+const mediaPickerTarget = document.getElementById("media-picker-target");
+const mediaLinkInput = document.getElementById("media-link-input");
 const interestCardsRoot = document.getElementById("interest-cards");
 const projectsRoot = document.getElementById("projects-list");
 
@@ -511,6 +515,8 @@ function renderMediaLibrary() {
       applyMediaToTarget(url);
     });
   });
+
+  renderMediaPicker();
 }
 
 function renderMediaPreview(item) {
@@ -541,6 +547,7 @@ function applyMediaToTarget(url) {
   activeMediaTarget.dispatchEvent(new Event("change", { bubbles: true }));
   activeMediaTarget.focus();
   mediaStatus.textContent = "Asset inserted into the selected field.";
+  closeMediaPicker();
 }
 
 function appendMediaLine(currentValue, url) {
@@ -565,7 +572,10 @@ function registerMediaTargetListeners(root = document) {
 
     const activateTarget = () => setActiveMediaTarget(element);
     element.addEventListener("focus", activateTarget);
-    element.addEventListener("click", activateTarget);
+    element.addEventListener("click", () => {
+      activateTarget();
+      openMediaPicker();
+    });
     element.dataset.mediaTargetBound = "true";
   });
 }
@@ -575,6 +585,72 @@ function setActiveMediaTarget(element) {
   const label = element.dataset.mediaTarget || "selected field";
   mediaTargetLabel.textContent = `Target: ${label}`;
   mediaStatus.textContent = "Pick any asset below to place it here.";
+  mediaPickerTarget.textContent = `Target: ${label}`;
+}
+
+function renderMediaPicker() {
+  if (!mediaPickerGrid) {
+    return;
+  }
+
+  if (!mediaItems.length) {
+    mediaPickerGrid.innerHTML = `<p class="media-library-empty">No uploaded media yet.</p>`;
+    return;
+  }
+
+  mediaPickerGrid.innerHTML = mediaItems
+    .map(
+      (item) => `
+        <article class="media-card" data-media-url="${escapeAttribute(item.url)}">
+          <div class="media-card__preview">
+            ${renderMediaPreview(item)}
+          </div>
+          <div class="media-card__meta">
+            <strong>${escapeHtml(item.name)}</strong>
+            <span>${escapeHtml(item.kind)}</span>
+          </div>
+          <button class="button button-primary media-card__action" type="button" data-media-modal-pick="${escapeAttribute(item.url)}">Select</button>
+        </article>
+      `
+    )
+    .join("");
+
+  mediaPickerGrid.querySelectorAll("[data-media-modal-pick]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const url = button.getAttribute("data-media-modal-pick") || "";
+      applyMediaToTarget(url);
+    });
+  });
+}
+
+function openMediaPicker() {
+  if (!mediaPicker) {
+    return;
+  }
+
+  renderMediaPicker();
+  mediaPicker.hidden = false;
+  document.body.classList.add("is-modal-open");
+}
+
+function closeMediaPicker() {
+  if (!mediaPicker) {
+    return;
+  }
+
+  mediaPicker.hidden = true;
+  mediaLinkInput.value = "";
+  document.body.classList.remove("is-modal-open");
+}
+
+function applyLinkToTarget() {
+  const value = String(mediaLinkInput.value || "").trim();
+  if (!value) {
+    mediaStatus.textContent = "Add a valid link first.";
+    return;
+  }
+
+  applyMediaToTarget(value);
 }
 
 function syncPreview() {
@@ -699,6 +775,17 @@ document.getElementById("save-content").addEventListener("click", saveContent);
 document.getElementById("reload-content").addEventListener("click", loadContent);
 document.getElementById("upload-media").addEventListener("click", uploadMedia);
 document.getElementById("refresh-media-library").addEventListener("click", loadMediaLibrary);
+document.getElementById("close-media-picker").addEventListener("click", closeMediaPicker);
+document.querySelectorAll("[data-media-picker-close]").forEach((element) => {
+  element.addEventListener("click", closeMediaPicker);
+});
+document.getElementById("use-media-link").addEventListener("click", applyLinkToTarget);
+mediaLinkInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    applyLinkToTarget();
+  }
+});
 document.getElementById("logout-admin").addEventListener("click", async () => {
   try {
     await fetch("/api/admin-logout", {
@@ -719,6 +806,12 @@ document.getElementById("add-project").addEventListener("click", () => {
   projectsRoot.appendChild(card);
   registerMediaTargetListeners(card);
   syncPreview();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && mediaPicker && !mediaPicker.hidden) {
+    closeMediaPicker();
+  }
 });
 
 loadContent().catch((error) => {
