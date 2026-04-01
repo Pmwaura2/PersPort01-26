@@ -529,7 +529,7 @@ function renderMediaPreview(item) {
     `;
   }
 
-  return `<img class="media-card__asset" src="${escapeHtml(item.url)}" alt="${escapeHtml(item.name)}" loading="lazy" />`;
+  return `<img class="media-card__asset" src="${escapeHtml(getRenderableImageUrl(item.url))}" alt="${escapeHtml(item.name)}" loading="lazy" />`;
 }
 
 function applyMediaToTarget(url) {
@@ -686,6 +686,15 @@ function applyLinkToTarget() {
   }
 
   applyMediaToTarget(value);
+}
+
+function getRenderableImageUrl(url) {
+  const normalized = String(url || "").trim();
+  if (!normalized) {
+    return "";
+  }
+
+  return `/api/image?url=${encodeURIComponent(normalized)}`;
 }
 
 function setupImageFallbacks(root = document) {

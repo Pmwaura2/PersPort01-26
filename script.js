@@ -431,7 +431,7 @@ function resolveMedia(url, type, poster) {
 
   return {
     kind: "image",
-    url: normalized
+    url: getRenderableImageUrl(normalized)
   };
 }
 
@@ -494,9 +494,18 @@ function applyBackground(background) {
   }
 
   backgroundRoot.innerHTML = `
-    <img class="page-media-bg__asset" data-resilient-image="true" src="${escapeHtml(background.url)}" alt="" />
+    <img class="page-media-bg__asset" data-resilient-image="true" src="${escapeHtml(getRenderableImageUrl(background.url))}" alt="" />
     <div class="page-media-bg__overlay"></div>
   `;
+}
+
+function getRenderableImageUrl(url) {
+  const normalized = String(url || "").trim();
+  if (!normalized) {
+    return "";
+  }
+
+  return `/api/image?url=${encodeURIComponent(normalized)}`;
 }
 
 function setupImageFallbacks(root = document) {
