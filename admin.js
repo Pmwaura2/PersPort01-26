@@ -71,7 +71,7 @@ const inputs = {
 
 async function loadContent() {
   statusLabel.textContent = "Loading content...";
-  const data = await loadAdminContent();
+  const data = normalizeContent(await loadAdminContent());
   currentContent = data;
   populateForm(data);
   syncPreview();
@@ -286,6 +286,7 @@ function collectContent() {
       location: inputs.siteLocation.value.trim()
     },
     pages: {
+      ...(currentContent?.pages || {}),
       intro: {
         eyebrow: inputs.introEyebrow.value.trim(),
         title: inputs.introTitle.value.trim(),
@@ -362,7 +363,52 @@ function collectContent() {
           url: inputs.contactBgUrl.value.trim(),
           poster: currentContent?.pages?.contact?.background?.poster || ""
         }
+      },
+      more: currentContent?.pages?.more || getDefaultMorePageContent()
+    }
+  };
+}
+
+function normalizeContent(content) {
+  return {
+    ...content,
+    pages: {
+      ...(content?.pages || {}),
+      more: content?.pages?.more || getDefaultMorePageContent()
+    }
+  };
+}
+
+function getDefaultMorePageContent() {
+  return {
+    eyebrow: "More",
+    title: "Additional context around how I show up.",
+    lede: "A few of the organizations, recognitions, and mentoring roles that shape how I contribute beyond a single project.",
+    affiliations: [
+      {
+        label: "Campus",
+        title: "Engineering and builder communities",
+        description: "Active in student spaces where technical projects, peer learning, and collaborative builds are part of the culture."
       }
+    ],
+    awards: [
+      {
+        label: "Recognition",
+        title: "Project and presentation distinction",
+        description: "Highlights for work that combined technical execution with clear communication."
+      }
+    ],
+    mentorship: [
+      {
+        label: "Peer Support",
+        title: "Helping others ramp faster",
+        description: "I enjoy supporting classmates and collaborators through documentation, walkthroughs, and practical feedback."
+      }
+    ],
+    background: {
+      type: "none",
+      url: "",
+      poster: ""
     }
   };
 }

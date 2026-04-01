@@ -29,11 +29,14 @@ export async function GET(request) {
     }
 
     const contentType = inferContentType(sourceUrl.pathname, upstream.headers.get("content-type") || "");
+    const body = await upstream.arrayBuffer();
     const headers = new Headers();
     headers.set("Content-Type", contentType.startsWith("image/") ? contentType : inferContentType(sourceUrl.pathname));
     headers.set("Cache-Control", "public, max-age=31536000, immutable");
+    headers.set("Content-Disposition", "inline");
+    headers.set("Access-Control-Allow-Origin", "*");
 
-    return new Response(upstream.body, {
+    return new Response(body, {
       status: 200,
       headers
     });

@@ -68,7 +68,7 @@ function renderPage(content) {
     return;
   }
 
-  const page = content.pages?.[currentPage];
+  const page = content.pages?.[currentPage] || getDefaultPageContent(currentPage);
   if (!page) {
     pageRoot.innerHTML = `<section class="panel"><p>This page is temporarily unavailable.</p></section>`;
     return;
@@ -89,12 +89,23 @@ function renderPage(content) {
     case "projects":
       pageRoot.innerHTML = renderProjects(page);
       break;
+    case "more":
+      pageRoot.innerHTML = renderMore(page);
+      break;
     case "contact":
       pageRoot.innerHTML = renderContact(content.site, page);
       break;
     default:
       pageRoot.innerHTML = `<section class="panel"><p>This page is temporarily unavailable.</p></section>`;
   }
+}
+
+function getDefaultPageContent(pageKey) {
+  if (pageKey === "more") {
+    return getDefaultMorePageContent();
+  }
+
+  return null;
 }
 
 function renderIntro(site, page) {
@@ -286,6 +297,62 @@ function renderContact(site, page) {
   `;
 }
 
+function renderMore(page) {
+  return `
+    <section class="hero">
+      <div class="page-intro" data-reveal>
+        <p class="eyebrow">${escapeHtml(page.eyebrow)}</p>
+        <h1>${escapeHtml(page.title)}</h1>
+        <p class="lede">${escapeHtml(page.lede)}</p>
+      </div>
+    </section>
+    <section class="section grid-three">
+      <article class="panel" data-reveal>
+        <p class="eyebrow">Affiliations</p>
+        <div class="timeline">
+          ${page.affiliations.map((item) => `
+            <div class="timeline-item">
+              <span class="meta">${escapeHtml(item.label)}</span>
+              <div>
+                <h3>${escapeHtml(item.title)}</h3>
+                <p>${escapeHtml(item.description)}</p>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      </article>
+      <article class="panel panel-spotlight" data-reveal>
+        <p class="eyebrow">Awards</p>
+        <div class="timeline">
+          ${page.awards.map((item) => `
+            <div class="timeline-item">
+              <span class="meta">${escapeHtml(item.label)}</span>
+              <div>
+                <h3>${escapeHtml(item.title)}</h3>
+                <p>${escapeHtml(item.description)}</p>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      </article>
+      <article class="panel" data-reveal>
+        <p class="eyebrow">Mentorship</p>
+        <div class="timeline">
+          ${page.mentorship.map((item) => `
+            <div class="timeline-item">
+              <span class="meta">${escapeHtml(item.label)}</span>
+              <div>
+                <h3>${escapeHtml(item.title)}</h3>
+                <p>${escapeHtml(item.description)}</p>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      </article>
+    </section>
+  `;
+}
+
 function renderProjectCard(project, index) {
   const mediaItems = normalizeProjectMedia(project);
 
@@ -457,6 +524,40 @@ function normalizeProjectMedia(project) {
   }
 
   return [];
+}
+
+function getDefaultMorePageContent() {
+  return {
+    eyebrow: "More",
+    title: "Additional context around how I show up.",
+    lede: "A few of the organizations, recognitions, and mentoring roles that shape how I contribute beyond a single project.",
+    affiliations: [
+      {
+        label: "Campus",
+        title: "Engineering and builder communities",
+        description: "Active in student spaces where technical projects, peer learning, and collaborative builds are part of the culture."
+      }
+    ],
+    awards: [
+      {
+        label: "Recognition",
+        title: "Project and presentation distinction",
+        description: "Highlights for work that combined technical execution with clear communication."
+      }
+    ],
+    mentorship: [
+      {
+        label: "Peer Support",
+        title: "Helping others ramp faster",
+        description: "I enjoy supporting classmates and collaborators through documentation, walkthroughs, and practical feedback."
+      }
+    ],
+    background: {
+      type: "none",
+      url: "",
+      poster: ""
+    }
+  };
 }
 
 function extractYouTubeId(url) {

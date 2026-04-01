@@ -207,6 +207,52 @@
         "poster": ""
       }
     },
+    "more": {
+      "eyebrow": "More",
+      "title": "Additional context around how I show up.",
+      "lede": "A few of the organizations, recognitions, and mentoring roles that shape how I contribute beyond a single project.",
+      "affiliations": [
+        {
+          "label": "Campus",
+          "title": "Engineering and builder communities",
+          "description": "Active in student spaces where technical projects, peer learning, and collaborative builds are part of the culture."
+        },
+        {
+          "label": "Professional",
+          "title": "Cross-disciplinary engineering communities",
+          "description": "I gravitate toward groups that blend technical depth, communication, and collaborative problem-solving."
+        }
+      ],
+      "awards": [
+        {
+          "label": "Recognition",
+          "title": "Project and presentation distinction",
+          "description": "Recognition for work that paired technical execution with clear storytelling and strong delivery."
+        },
+        {
+          "label": "Academic",
+          "title": "Growth through ambitious coursework",
+          "description": "Academic milestones that reflect persistence, curiosity, and a willingness to take on demanding technical work."
+        }
+      ],
+      "mentorship": [
+        {
+          "label": "Peer Support",
+          "title": "Helping others ramp faster",
+          "description": "I enjoy making technical work more approachable through walkthroughs, documentation, and practical feedback."
+        },
+        {
+          "label": "Community",
+          "title": "Creating momentum in team environments",
+          "description": "Mentorship, to me, is often about reducing confusion and helping collaborators move with more confidence."
+        }
+      ],
+      "background": {
+        "type": "none",
+        "url": "",
+        "poster": ""
+      }
+    },
     "contact": {
       "eyebrow": "Contact",
       "title": "Open to teams that value range, speed, and clarity.",
