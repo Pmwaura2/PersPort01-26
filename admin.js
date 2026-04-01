@@ -2,10 +2,15 @@ const editor = document.getElementById("content-editor");
 const statusLabel = document.getElementById("admin-status");
 const uploadResult = document.getElementById("upload-result");
 const fileInput = document.getElementById("media-file");
+const mediaStatus = document.getElementById("media-status");
+const mediaLibrary = document.getElementById("media-library");
+const mediaTargetLabel = document.getElementById("media-target-label");
 const interestCardsRoot = document.getElementById("interest-cards");
 const projectsRoot = document.getElementById("projects-list");
 
 let currentContent = null;
+let mediaItems = [];
+let activeMediaTarget = null;
 
 const inputs = {
   siteName: document.getElementById("site-name"),
@@ -36,12 +41,18 @@ const inputs = {
   aboutNotes: document.getElementById("about-notes"),
   aboutQuote: document.getElementById("about-quote"),
   aboutQuoteBody: document.getElementById("about-quote-body"),
+  aboutBgType: document.getElementById("about-bg-type"),
+  aboutBgUrl: document.getElementById("about-bg-url"),
   interestsTitle: document.getElementById("interests-title"),
   interestsLede: document.getElementById("interests-lede"),
   interestsFavorites: document.getElementById("interests-favorites"),
   interestsOutside: document.getElementById("interests-outside"),
+  interestsBgType: document.getElementById("interests-bg-type"),
+  interestsBgUrl: document.getElementById("interests-bg-url"),
   projectsTitle: document.getElementById("projects-title"),
   projectsLede: document.getElementById("projects-lede"),
+  projectsBgType: document.getElementById("projects-bg-type"),
+  projectsBgUrl: document.getElementById("projects-bg-url"),
   contactTitle: document.getElementById("contact-title"),
   contactLede: document.getElementById("contact-lede"),
   contactReachTitle: document.getElementById("contact-reach-title"),
@@ -49,7 +60,9 @@ const inputs = {
   contactPrimaryLabel: document.getElementById("contact-primary-label"),
   contactPrimaryHref: document.getElementById("contact-primary-href"),
   contactSecondaryLabel: document.getElementById("contact-secondary-label"),
-  contactSecondaryHref: document.getElementById("contact-secondary-href")
+  contactSecondaryHref: document.getElementById("contact-secondary-href"),
+  contactBgType: document.getElementById("contact-bg-type"),
+  contactBgUrl: document.getElementById("contact-bg-url")
 };
 
 async function loadContent() {
@@ -58,6 +71,7 @@ async function loadContent() {
   currentContent = data;
   populateForm(data);
   syncPreview();
+  await loadMediaLibrary();
   statusLabel.textContent = isHostedVercel()
     ? "Editor ready."
     : "Content loaded.";
@@ -110,14 +124,20 @@ function populateForm(content) {
   inputs.aboutNotes.value = (pages.about.recruiterNotes || []).join("\n");
   inputs.aboutQuote.value = pages.about.quote || "";
   inputs.aboutQuoteBody.value = pages.about.quoteBody || "";
+  inputs.aboutBgType.value = pages.about.background?.type || "none";
+  inputs.aboutBgUrl.value = pages.about.background?.url || "";
 
   inputs.interestsTitle.value = pages.interests.title || "";
   inputs.interestsLede.value = pages.interests.lede || "";
   inputs.interestsFavorites.value = (pages.interests.favorites || []).join("\n");
   inputs.interestsOutside.value = (pages.interests.outsideParagraphs || []).join("\n\n");
+  inputs.interestsBgType.value = pages.interests.background?.type || "none";
+  inputs.interestsBgUrl.value = pages.interests.background?.url || "";
 
   inputs.projectsTitle.value = pages.projects.title || "";
   inputs.projectsLede.value = pages.projects.lede || "";
+  inputs.projectsBgType.value = pages.projects.background?.type || "none";
+  inputs.projectsBgUrl.value = pages.projects.background?.url || "";
 
   inputs.contactTitle.value = pages.contact.title || "";
   inputs.contactLede.value = pages.contact.lede || "";
@@ -127,9 +147,12 @@ function populateForm(content) {
   inputs.contactPrimaryHref.value = pages.contact.primaryButtonHref || "";
   inputs.contactSecondaryLabel.value = pages.contact.secondaryButtonLabel || "";
   inputs.contactSecondaryHref.value = pages.contact.secondaryButtonHref || "";
+  inputs.contactBgType.value = pages.contact.background?.type || "none";
+  inputs.contactBgUrl.value = pages.contact.background?.url || "";
 
   renderInterestCards(pages.interests.cards || []);
   renderProjects(pages.projects.items || []);
+  registerMediaTargetListeners(document);
 }
 
 function renderInterestCards(cards) {
@@ -171,6 +194,7 @@ function buildInterestCard(card = {}) {
 function renderProjects(projects) {
   projectsRoot.innerHTML = "";
   projects.forEach((project) => projectsRoot.appendChild(buildProjectCard(project)));
+  registerMediaTargetListeners(projectsRoot);
 }
 
 function buildProjectCard(project = {}) {
@@ -209,15 +233,15 @@ function buildProjectCard(project = {}) {
       </label>
       <label class="field">
         <span>Media URL</span>
-        <input data-field="mediaUrl" type="text" value="${escapeAttribute(project.mediaUrl || "")}" />
+        <input data-field="mediaUrl" data-media-target="project media" type="text" value="${escapeAttribute(project.mediaUrl || "")}" />
       </label>
       <label class="field">
         <span>Media Poster</span>
-        <input data-field="mediaPoster" type="text" value="${escapeAttribute(project.mediaPoster || "")}" />
+        <input data-field="mediaPoster" data-media-target="project poster" type="text" value="${escapeAttribute(project.mediaPoster || "")}" />
       </label>
       <label class="field field-full">
         <span>Media Gallery</span>
-        <textarea data-field="mediaItems" placeholder="One item per line: type|url|poster(optional)">${escapeHtml(mediaItemsText)}</textarea>
+        <textarea data-field="mediaItems" data-media-target="project gallery" placeholder="One media URL per line. Types are detected automatically, or use type|url|poster for manual control.">${escapeHtml(mediaItemsText)}</textarea>
       </label>
       <label class="field field-full">
         <span>Bullets</span>
@@ -289,7 +313,11 @@ function collectContent() {
         education: currentContent?.pages?.about?.education || [],
         quote: inputs.aboutQuote.value.trim(),
         quoteBody: inputs.aboutQuoteBody.value.trim(),
-        background: currentContent?.pages?.about?.background || { type: "none", url: "", poster: "" }
+        background: {
+          type: inputs.aboutBgType.value,
+          url: inputs.aboutBgUrl.value.trim(),
+          poster: currentContent?.pages?.about?.background?.poster || ""
+        }
       },
       interests: {
         eyebrow: currentContent?.pages?.interests?.eyebrow || "Interests",
@@ -298,14 +326,22 @@ function collectContent() {
         cards: collectInterestCards(),
         favorites: splitLines(inputs.interestsFavorites.value),
         outsideParagraphs: splitParagraphs(inputs.interestsOutside.value),
-        background: currentContent?.pages?.interests?.background || { type: "none", url: "", poster: "" }
+        background: {
+          type: inputs.interestsBgType.value,
+          url: inputs.interestsBgUrl.value.trim(),
+          poster: currentContent?.pages?.interests?.background?.poster || ""
+        }
       },
       projects: {
         eyebrow: currentContent?.pages?.projects?.eyebrow || "Projects",
         title: inputs.projectsTitle.value.trim(),
         lede: inputs.projectsLede.value.trim(),
         items: collectProjects(),
-        background: currentContent?.pages?.projects?.background || { type: "none", url: "", poster: "" }
+        background: {
+          type: inputs.projectsBgType.value,
+          url: inputs.projectsBgUrl.value.trim(),
+          poster: currentContent?.pages?.projects?.background?.poster || ""
+        }
       },
       contact: {
         eyebrow: currentContent?.pages?.contact?.eyebrow || "Contact",
@@ -317,7 +353,11 @@ function collectContent() {
         primaryButtonHref: inputs.contactPrimaryHref.value.trim(),
         secondaryButtonLabel: inputs.contactSecondaryLabel.value.trim(),
         secondaryButtonHref: inputs.contactSecondaryHref.value.trim(),
-        background: currentContent?.pages?.contact?.background || { type: "none", url: "", poster: "" }
+        background: {
+          type: inputs.contactBgType.value,
+          url: inputs.contactBgUrl.value.trim(),
+          poster: currentContent?.pages?.contact?.background?.poster || ""
+        }
       }
     }
   };
@@ -407,6 +447,136 @@ function inferMediaType(url) {
   return "image";
 }
 
+async function loadMediaLibrary() {
+  if (!mediaLibrary) {
+    return;
+  }
+
+  mediaLibrary.innerHTML = "";
+  mediaStatus.textContent = "Loading uploaded media...";
+
+  try {
+    const response = await fetch("/api/media", {
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      throw new Error(result.error || "Library unavailable.");
+    }
+
+    mediaItems = Array.isArray(result.items) ? result.items : [];
+    renderMediaLibrary();
+    mediaStatus.textContent = mediaItems.length
+      ? "Media library ready."
+      : "No uploaded media yet.";
+  } catch (error) {
+    mediaLibrary.innerHTML = "";
+    mediaStatus.textContent = error.message || "Library unavailable.";
+  }
+}
+
+function renderMediaLibrary() {
+  if (!mediaLibrary) {
+    return;
+  }
+
+  if (!mediaItems.length) {
+    mediaLibrary.innerHTML = `<p class="media-library-empty">No media uploaded yet.</p>`;
+    return;
+  }
+
+  mediaLibrary.innerHTML = mediaItems
+    .map(
+      (item) => `
+        <article class="media-card" data-media-url="${escapeAttribute(item.url)}">
+          <div class="media-card__preview">
+            ${renderMediaPreview(item)}
+          </div>
+          <div class="media-card__meta">
+            <strong>${escapeHtml(item.name)}</strong>
+            <span>${escapeHtml(item.kind)}</span>
+          </div>
+          <button class="button button-ghost media-card__action" type="button" data-media-pick="${escapeAttribute(item.url)}">Use This</button>
+        </article>
+      `
+    )
+    .join("");
+
+  mediaLibrary.querySelectorAll("[data-media-pick]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const url = button.getAttribute("data-media-pick") || "";
+      applyMediaToTarget(url);
+    });
+  });
+}
+
+function renderMediaPreview(item) {
+  if (item.kind === "video") {
+    return `
+      <video class="media-card__asset" muted playsinline preload="metadata">
+        <source src="${escapeHtml(item.url)}" />
+      </video>
+    `;
+  }
+
+  return `<img class="media-card__asset" src="${escapeHtml(item.url)}" alt="${escapeHtml(item.name)}" loading="lazy" />`;
+}
+
+function applyMediaToTarget(url) {
+  if (!activeMediaTarget) {
+    mediaStatus.textContent = "Choose a target field first.";
+    return;
+  }
+
+  if (activeMediaTarget.tagName === "TEXTAREA" && activeMediaTarget.dataset.field === "mediaItems") {
+    activeMediaTarget.value = appendMediaLine(activeMediaTarget.value, url);
+  } else {
+    activeMediaTarget.value = url;
+  }
+
+  activeMediaTarget.dispatchEvent(new Event("input", { bubbles: true }));
+  activeMediaTarget.dispatchEvent(new Event("change", { bubbles: true }));
+  activeMediaTarget.focus();
+  mediaStatus.textContent = "Asset inserted into the selected field.";
+}
+
+function appendMediaLine(currentValue, url) {
+  const value = String(currentValue || "").trim();
+  if (!value) {
+    return url;
+  }
+
+  const existingLines = value.split("\n").map((line) => line.trim());
+  if (existingLines.includes(url)) {
+    return value;
+  }
+
+  return `${value}\n${url}`;
+}
+
+function registerMediaTargetListeners(root = document) {
+  root.querySelectorAll("[data-media-target]").forEach((element) => {
+    if (element.dataset.mediaTargetBound === "true") {
+      return;
+    }
+
+    const activateTarget = () => setActiveMediaTarget(element);
+    element.addEventListener("focus", activateTarget);
+    element.addEventListener("click", activateTarget);
+    element.dataset.mediaTargetBound = "true";
+  });
+}
+
+function setActiveMediaTarget(element) {
+  activeMediaTarget = element;
+  const label = element.dataset.mediaTarget || "selected field";
+  mediaTargetLabel.textContent = `Target: ${label}`;
+  mediaStatus.textContent = "Pick any asset below to place it here.";
+}
+
 function syncPreview() {
   const payload = collectContent();
   editor.value = JSON.stringify(payload, null, 2);
@@ -444,22 +614,32 @@ async function uploadMedia() {
     return;
   }
 
-  const formData = new FormData();
-  formData.append("file", fileInput.files[0]);
-  uploadResult.value = "Uploading...";
+  const files = Array.from(fileInput.files);
+  uploadResult.value = `Uploading ${files.length} file${files.length === 1 ? "" : "s"}...`;
 
-  const response = await fetch("/api/upload", {
-    method: "POST",
-    body: formData
-  });
+  const uploadedPaths = [];
 
-  const result = await response.json();
-  if (!response.ok) {
-    uploadResult.value = result.error || "Upload failed.";
-    return;
+  for (const file of files) {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      uploadResult.value = result.error || `Upload failed for ${file.name}.`;
+      return;
+    }
+
+    uploadedPaths.push(result.path);
   }
 
-  uploadResult.value = result.path;
+  uploadResult.value = uploadedPaths.join("\n");
+  fileInput.value = "";
+  await loadMediaLibrary();
 }
 
 async function fetchJson(url) {
@@ -518,6 +698,7 @@ document.querySelectorAll("input, textarea, select").forEach((element) => {
 document.getElementById("save-content").addEventListener("click", saveContent);
 document.getElementById("reload-content").addEventListener("click", loadContent);
 document.getElementById("upload-media").addEventListener("click", uploadMedia);
+document.getElementById("refresh-media-library").addEventListener("click", loadMediaLibrary);
 document.getElementById("logout-admin").addEventListener("click", async () => {
   try {
     await fetch("/api/admin-logout", {
@@ -534,7 +715,9 @@ document.getElementById("add-interest-card").addEventListener("click", () => {
 });
 
 document.getElementById("add-project").addEventListener("click", () => {
-  projectsRoot.appendChild(buildProjectCard());
+  const card = buildProjectCard();
+  projectsRoot.appendChild(card);
+  registerMediaTargetListeners(card);
   syncPreview();
 });
 

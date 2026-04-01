@@ -56,12 +56,24 @@
         <section class="panel">
           <p class="eyebrow">Upload Media</p>
           <h2>Images and videos</h2>
-          <p>Upload a file, then paste the returned URL into a page background or project media gallery. For multiple project items, use one line per media item with: type|url|poster(optional).</p>
+          <p>Upload several files at once, preview them in the library, then click any asset to place it into the field you are editing.</p>
           <div class="upload-row">
-            <input id="media-file" type="file" />
-            <button class="button button-ghost" id="upload-media" type="button">Upload File</button>
+            <input id="media-file" type="file" multiple />
+            <button class="button button-ghost" id="upload-media" type="button">Upload Selected Files</button>
           </div>
+          <p class="admin-status" id="media-status">Focus a background or media field, then choose an asset below.</p>
           <textarea id="upload-result" class="json-editor json-editor-small" readonly></textarea>
+        </section>
+
+        <section class="panel">
+          <p class="eyebrow">Media Library</p>
+          <h2>Choose uploaded assets</h2>
+          <p>Click into a background URL, media URL, poster, or project gallery field first. Then select an item here to place it automatically.</p>
+          <div class="media-library-toolbar">
+            <button class="button button-ghost" id="refresh-media-library" type="button">Refresh Library</button>
+            <span class="media-library-target" id="media-target-label">No target selected.</span>
+          </div>
+          <div class="media-library" id="media-library"></div>
         </section>
 
         <form class="admin-form-grid" id="admin-form">
@@ -160,7 +172,7 @@
               </label>
               <label class="field">
                 <span>Background URL</span>
-                <input id="intro-bg-url" type="text" />
+                <input id="intro-bg-url" type="text" data-media-target="intro background" />
               </label>
             </div>
           </section>
@@ -196,6 +208,18 @@
                 <span>Quote Body</span>
                 <textarea id="about-quote-body"></textarea>
               </label>
+              <label class="field">
+                <span>Background Type</span>
+                <select id="about-bg-type">
+                  <option value="none">None</option>
+                  <option value="image">Image</option>
+                  <option value="video">Video</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Background URL</span>
+                <input id="about-bg-url" type="text" data-media-target="about background" />
+              </label>
             </div>
           </section>
 
@@ -218,6 +242,18 @@
                 <span>Outside The Classroom</span>
                 <textarea id="interests-outside" placeholder="One paragraph per blank-line break"></textarea>
               </label>
+              <label class="field">
+                <span>Background Type</span>
+                <select id="interests-bg-type">
+                  <option value="none">None</option>
+                  <option value="image">Image</option>
+                  <option value="video">Video</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Background URL</span>
+                <input id="interests-bg-url" type="text" data-media-target="interests background" />
+              </label>
             </div>
             <div id="interest-cards" class="stack-builder"></div>
             <button class="button button-ghost" id="add-interest-card" type="button">Add Interest Card</button>
@@ -233,6 +269,18 @@
               <label class="field">
                 <span>Page Lede</span>
                 <textarea id="projects-lede"></textarea>
+              </label>
+              <label class="field">
+                <span>Background Type</span>
+                <select id="projects-bg-type">
+                  <option value="none">None</option>
+                  <option value="image">Image</option>
+                  <option value="video">Video</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Background URL</span>
+                <input id="projects-bg-url" type="text" data-media-target="projects background" />
               </label>
             </div>
             <div id="projects-list" class="stack-builder"></div>
@@ -273,6 +321,18 @@
               <label class="field">
                 <span>Secondary Button Link</span>
                 <input id="contact-secondary-href" type="text" />
+              </label>
+              <label class="field">
+                <span>Background Type</span>
+                <select id="contact-bg-type">
+                  <option value="none">None</option>
+                  <option value="image">Image</option>
+                  <option value="video">Video</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Background URL</span>
+                <input id="contact-bg-url" type="text" data-media-target="contact background" />
               </label>
             </div>
           </section>

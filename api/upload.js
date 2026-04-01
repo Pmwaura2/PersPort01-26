@@ -1,4 +1,5 @@
 import { put } from "@vercel/blob";
+import { inferContentType } from "../lib/media-utils.js";
 
 export async function POST(request) {
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
@@ -15,7 +16,8 @@ export async function POST(request) {
 
     const blob = await put(`media/uploads/${file.name}`, file, {
       access: "public",
-      addRandomSuffix: true
+      addRandomSuffix: true,
+      contentType: inferContentType(file.name, file.type)
     });
 
     return Response.json({ ok: true, path: blob.url });

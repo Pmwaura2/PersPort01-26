@@ -6,7 +6,7 @@ import {
 } from "./lib/admin-auth.js";
 
 export const config = {
-  matcher: ["/admin.html", "/api/content", "/api/upload", "/api/admin-logout"]
+  matcher: ["/admin.html", "/api/content", "/api/upload", "/api/media", "/api/admin-logout"]
 };
 
 export default async function middleware(request) {
