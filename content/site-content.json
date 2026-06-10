@@ -2,7 +2,7 @@
   "site": {
     "name": "Peter Mwaura",
     "brand": "P/M",
-    "role": "Engineering Student | Creative Technologist",
+    "role": "Engineering Student | Systems Builder",
     "email": "peter@example.com",
     "linkedin": "https://www.linkedin.com/",
     "github": "https://github.com/",
@@ -12,10 +12,10 @@
   },
   "pages": {
     "intro": {
-      "eyebrow": "Engineering Student | Creative Technologist",
-      "title": "A portfolio that feels",
-      "titleAccent": "more like a product launch.",
-      "lede": "I am Peter Mwaura, an engineering student who builds across code, hardware, and storytelling. I like work that blends technical rigor with clear communication and memorable product thinking.",
+      "eyebrow": "Engineering Student | Systems Builder",
+      "title": "Engineering work shaped",
+      "titleAccent": "for the real world.",
+      "lede": "I am Peter Mwaura, an engineering student interested in systems, infrastructure, design, and the practical side of how things are made to work. I like projects that sit between technical depth, clear communication, and useful outcomes.",
       "primaryCtaLabel": "Explore Projects",
       "primaryCtaHref": "/projects.html",
       "secondaryCtaLabel": "Meet Peter",
@@ -24,32 +24,32 @@
       "overviewItems": [
         {
           "label": "Positioning",
-          "value": "Engineering student with product instincts"
+          "value": "Engineering student with strong systems instincts"
         },
         {
           "label": "Best Fit",
-          "value": "Backend, product engineering, and software internships"
+          "value": "Systems, product, operations, and multidisciplinary engineering roles"
         },
         {
           "label": "Approach",
-          "value": "Prototype quickly, explain clearly, iterate with intent"
+          "value": "Frame the problem, prototype deliberately, refine with evidence"
         }
       ],
       "recruiterTitle": "Fast Recruiter Read",
-      "recruiterHeading": "I build with range, but I present with focus.",
-      "recruiterBody": "This site is structured like a company website on purpose. Each page isolates a clear story: who I am, what I care about, what I have built, and how I think.",
+      "recruiterHeading": "I care about engineering that holds up outside the lab.",
+      "recruiterBody": "This site is structured to show how I think across systems, people, and implementation. The goal is not just to show what I built, but how I approach engineering problems with structure, usability, and context in mind.",
       "metrics": [
         {
           "value": "12+",
-          "label": "student-led builds"
+          "label": "project-based builds"
         },
         {
           "value": "4",
-          "label": "technical disciplines blended"
+          "label": "engineering lenses combined"
         },
         {
           "value": "2026",
-          "label": "internship season target"
+          "label": "internship cycle"
         }
       ],
       "background": {
@@ -60,38 +60,38 @@
     },
     "about": {
       "eyebrow": "About Me",
-      "title": "Built by curiosity, sharpened by iteration.",
-      "lede": "I enjoy being in the middle of messy, real-world problems. I like finding structure, testing quickly, and shaping technical work into something people can trust and understand.",
-      "workingStyleTitle": "I like being the person who turns ambiguity into momentum.",
+      "title": "Curious about systems, disciplined about execution.",
+      "lede": "I am most energized by engineering problems that are technical, open-ended, and close to lived reality. I like taking something vague, breaking it into workable parts, and building toward a solution that people can actually use.",
+      "workingStyleTitle": "I like turning complexity into something understandable and buildable.",
       "workingStyleParagraphs": [
-        "My strongest work happens when a team needs both technical depth and clarity. I enjoy translating between disciplines and helping a project stay legible as it grows.",
-        "I care about taste in engineering: not just whether something works, but whether it is easy to maintain, easy to understand, and clearly aligned with the problem it solves."
+        "My best work usually happens in multidisciplinary settings where technical design, communication, and constraints all matter at once. I enjoy being the person who can keep the engineering grounded while still moving the project forward.",
+        "I care about engineering judgment. That means thinking about reliability, usability, tradeoffs, and whether a solution makes sense in the environment where it will actually live."
       ],
       "recruiterNotes": [
-        "Comfortable across software and systems thinking",
-        "Strong presentation and documentation habits",
-        "Ownership mindset in student-led teams",
-        "Able to explain technical tradeoffs clearly"
+        "Comfortable with systems thinking and implementation detail",
+        "Strong presentation, documentation, and design communication habits",
+        "Ownership mindset in student-led and collaborative work",
+        "Able to connect engineering decisions to human and operational impact"
       ],
       "education": [
         {
           "year": "2024",
           "title": "B.S. Candidate in Engineering",
-          "description": "Coursework spanning programming, systems design, and human-centered engineering."
+          "description": "Coursework spanning engineering analysis, systems design, prototyping, and human-centered problem solving."
         },
         {
           "year": "2025",
-          "title": "Product Engineering Intern",
-          "description": "Built internal tools, supported experiments, and helped shape technical communication."
+          "title": "Applied Project Experience",
+          "description": "Worked on projects where technical development, iteration, and communication all mattered to the result."
         },
         {
           "year": "2026",
-          "title": "Design Lead in Student Projects",
-          "description": "Coordinated prototype reviews and pushed ideas from concept to testable systems."
+          "title": "Prototype and Team Leadership",
+          "description": "Helped move ideas from concept to testable systems through reviews, coordination, and practical iteration."
         }
       ],
-      "quote": "Great engineering is not only functional. It is legible, adaptable, and persuasive.",
-      "quoteBody": "That is the lens I bring to every project, whether I am writing backend code, building tools, or pitching the outcome.",
+      "quote": "Good engineering solves the problem in front of you and still makes sense a year later.",
+      "quoteBody": "That is the standard I try to build toward, whether the work involves digital systems, physical context, or the handoff between the two.",
       "background": {
         "type": "none",
         "url": "",
@@ -100,34 +100,34 @@
     },
     "interests": {
       "eyebrow": "Interests",
-      "title": "I am drawn to systems that feel alive.",
-      "lede": "The projects I choose are usually shaped by the same themes: automation, interfaces, resilience, scalable infrastructure, and tools that help people make better decisions.",
+      "title": "I am drawn to engineering with context.",
+      "lede": "The work I keep coming back to usually sits at the intersection of systems, infrastructure, operations, and human use. I am especially interested in how engineering decisions play out in real environments.",
       "cards": [
         {
-          "eyebrow": "Backend Systems",
-          "title": "Infrastructure that stays calm under pressure.",
-          "description": "I enjoy the architecture behind products: APIs, data flow, reliability, and clean service boundaries."
+          "eyebrow": "Systems",
+          "title": "How parts interact under real constraints.",
+          "description": "I like thinking about whole systems: inputs, failure points, interfaces, and how design choices behave once conditions stop being ideal."
         },
         {
-          "eyebrow": "Interfaces",
-          "title": "Clear control surfaces for complex systems.",
-          "description": "Dashboards and admin tools fascinate me because they turn complexity into something intuitive and usable."
+          "eyebrow": "Infrastructure",
+          "title": "Built solutions that stay useful over time.",
+          "description": "I am interested in the durability and maintainability of engineered systems, especially where function, environment, and access all shape the design."
         },
         {
-          "eyebrow": "Automation",
-          "title": "Engineering that reduces repetitive friction.",
-          "description": "I like building systems that take manual overhead out of a workflow without making the result feel opaque."
+          "eyebrow": "Prototyping",
+          "title": "Turning concepts into something testable.",
+          "description": "I enjoy early-stage build work because it reveals whether an idea actually works, what assumptions break first, and what needs to change next."
         }
       ],
       "favorites": [
-        "Turning raw data into operational insight",
-        "Building first-pass prototypes with clear feedback loops",
-        "Connecting services to thoughtful admin interfaces",
-        "Designing systems that explain themselves well"
+        "Designing around messy real-world constraints",
+        "Building first-pass prototypes with clear learning goals",
+        "Studying how systems behave under operational pressure",
+        "Translating engineering complexity into understandable decisions"
       ],
       "outsideParagraphs": [
-        "I like dissecting product launches and studying how strong technical teams communicate the value of what they build.",
-        "That is a big reason this portfolio leans into a studio aesthetic: it reflects the type of engineering culture I want to grow in."
+        "Outside of coursework, I pay attention to how engineering shows up in transportation, water, infrastructure, operations, and product systems that serve people at scale.",
+        "That is why this portfolio now leans into a cleaner, more modern engineering language: I want it to reflect broad technical curiosity, not just software identity."
       ],
       "background": {
         "type": "none",
@@ -137,43 +137,43 @@
     },
     "projects": {
       "eyebrow": "Projects",
-      "title": "Execution across backend, software, and story.",
-      "lede": "These projects are written the way recruiters and hiring managers usually need them: fast to scan, clear on ownership, and specific about what was actually built.",
+      "title": "Work across systems, operations, and implementation.",
+      "lede": "These projects show how I approach engineering work that blends structure, experimentation, coordination, and communication. The emphasis is on ownership, decision-making, and what the build was trying to accomplish.",
       "items": [
         {
           "eyebrow": "Featured Build | 2026",
-          "title": "Portfolio CMS and Media Studio",
-          "description": "Built a small editable content system that lets a personal site update from a browser-based admin without manually touching the page files.",
+          "title": "Engineering Portfolio Studio",
+          "description": "Designed and built a content-managed portfolio system to present engineering work with more clarity, structure, and media support than a static student site.",
           "bullets": [
-            "Created a lightweight content API and JSON-backed storage layer",
-            "Built an admin editor for text, media, and page backgrounds",
-            "Connected multi-page public views to shared structured content"
+            "Structured the site around project communication, recruiter usability, and visual storytelling",
+            "Built editable content flows, media handling, and multi-page rendering from a shared data model",
+            "Treated the site itself as a design-and-systems project rather than a simple web page"
           ],
-          "role": "Backend design, content modeling, admin tooling",
+          "role": "Systems design, content architecture, interface implementation",
           "tech": [
-            "Python",
-            "JSON API",
-            "JavaScript",
-            "HTML/CSS"
+            "Content Systems",
+            "UI Architecture",
+            "Web Implementation",
+            "Design Communication"
           ],
           "mediaType": "none",
           "mediaUrl": "",
           "mediaPoster": ""
         },
         {
-          "eyebrow": "Backend Systems | 2025",
-          "title": "Event and Operations API",
-          "description": "Designed a backend service for managing schedules, registrations, and internal dashboards for a student organization with growing operational needs.",
+          "eyebrow": "Operations Systems | 2025",
+          "title": "Event and Operations Planning System",
+          "description": "Designed a structured system for managing schedules, registrations, and internal workflows for a student organization with growing coordination needs.",
           "bullets": [
-            "Modeled the data structure for members, events, and registrations",
-            "Designed API endpoints for admin workflows and reporting",
-            "Focused on maintainability, role separation, and admin usability"
+            "Mapped the operational flow across members, events, communication, and reporting",
+            "Built the internal logic and admin pathways needed for smoother coordination",
+            "Focused on reducing friction for organizers while keeping the system legible"
           ],
-          "role": "Backend architecture, API design, tooling",
+          "role": "Operations design, workflow modeling, internal tooling",
           "tech": [
-            "Python",
-            "REST API",
-            "JSON",
+            "Systems Mapping",
+            "Workflow Design",
+            "Data Structure",
             "Admin Tools"
           ],
           "mediaType": "none",
@@ -181,20 +181,20 @@
           "mediaPoster": ""
         },
         {
-          "eyebrow": "Data + Product | 2025",
+          "eyebrow": "Decision Support | 2025",
           "title": "Operations Insight Dashboard",
-          "description": "Created a lightweight dashboard experience to turn raw operational data into decisions, with a focus on clarity for non-technical stakeholders.",
+          "description": "Created a dashboard-style decision support tool to turn raw operational information into something easier to interpret, discuss, and act on.",
           "bullets": [
-            "Cleaned and structured data for trend visibility",
-            "Framed outputs for quick recruiter and sponsor comprehension",
-            "Balanced interface clarity with engineering detail"
+            "Structured incoming information so patterns and bottlenecks were easier to spot",
+            "Designed outputs to support faster conversations and more confident decisions",
+            "Balanced visual clarity with the level of detail needed to stay technically honest"
           ],
-          "role": "Data shaping, dashboard UX, communication",
+          "role": "Information design, systems thinking, communication",
           "tech": [
-            "JavaScript",
             "Visualization",
             "Metrics",
-            "UI Design"
+            "Information Design",
+            "Decision Support"
           ],
           "mediaType": "none",
           "mediaUrl": "",
@@ -209,30 +209,30 @@
     },
     "more": {
       "eyebrow": "More",
-      "title": "Additional context around how I show up.",
-      "lede": "A few of the organizations, recognitions, and mentoring roles that shape how I contribute beyond a single project.",
+      "title": "Context beyond the project list.",
+      "lede": "Affiliations, recognition, and mentoring roles that say something about how I contribute in teams and communities, not just what I build on my own.",
       "affiliations": [
         {
           "label": "Campus",
           "title": "Engineering and builder communities",
-          "description": "Active in student spaces where technical projects, peer learning, and collaborative builds are part of the culture."
+          "description": "Involved in student spaces where collaborative problem solving, project work, and shared technical growth are central."
         },
         {
           "label": "Professional",
           "title": "Cross-disciplinary engineering communities",
-          "description": "I gravitate toward groups that blend technical depth, communication, and collaborative problem-solving."
+          "description": "Drawn to communities that connect technical work with communication, leadership, and practical impact."
         }
       ],
       "awards": [
         {
           "label": "Recognition",
           "title": "Project and presentation distinction",
-          "description": "Recognition for work that paired technical execution with clear storytelling and strong delivery."
+          "description": "Recognition for work that combined technical execution, clarity, and thoughtful delivery."
         },
         {
           "label": "Academic",
           "title": "Growth through ambitious coursework",
-          "description": "Academic milestones that reflect persistence, curiosity, and a willingness to take on demanding technical work."
+          "description": "Academic milestones that reflect persistence, curiosity, and a willingness to work through challenging technical material."
         }
       ],
       "mentorship": [
@@ -244,7 +244,7 @@
         {
           "label": "Community",
           "title": "Creating momentum in team environments",
-          "description": "Mentorship, to me, is often about reducing confusion and helping collaborators move with more confidence."
+          "description": "To me, mentorship often means reducing confusion, sharing structure, and helping collaborators move with more confidence."
         }
       ],
       "background": {
@@ -255,10 +255,10 @@
     },
     "contact": {
       "eyebrow": "Contact",
-      "title": "Open to teams that value range, speed, and clarity.",
-      "lede": "I am currently looking for engineering internship opportunities in backend, software, product engineering, or multidisciplinary build teams.",
-      "reachOutTitle": "Let's talk about what your team is building.",
-      "reachOutBody": "If you are hiring for roles where curiosity and execution both matter, I would love to connect.",
+      "title": "Open to engineering teams building with purpose.",
+      "lede": "I am looking for internship opportunities where systems thinking, technical rigor, and practical problem solving all matter, especially in multidisciplinary environments.",
+      "reachOutTitle": "Let’s talk about the problems your team is solving.",
+      "reachOutBody": "If you are hiring for work that values strong fundamentals, curiosity, and the ability to connect engineering to real use, I would be glad to connect.",
       "primaryButtonLabel": "Email Peter",
       "primaryButtonHref": "mailto:peter@example.com",
       "secondaryButtonLabel": "Review Projects",

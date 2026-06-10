@@ -1,16 +1,16 @@
 :root {
-  --bg: #09111a;
-  --bg-deep: #060b11;
-  --panel: rgba(14, 21, 31, 0.82);
-  --panel-strong: rgba(18, 27, 40, 0.94);
-  --line: rgba(255, 255, 255, 0.1);
-  --text: #edf3f8;
-  --muted: #9db0c3;
-  --accent: #ff8051;
-  --accent-2: #51d1d8;
-  --accent-3: #f8c75f;
-  --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
-  --radius: 28px;
+  --bg: #e6ecef;
+  --bg-deep: #d3dde2;
+  --panel: rgba(250, 252, 253, 0.84);
+  --panel-strong: rgba(240, 245, 247, 0.96);
+  --line: rgba(19, 39, 52, 0.1);
+  --text: #12212c;
+  --muted: #5c6d79;
+  --accent: #dd6b2d;
+  --accent-2: #1d6872;
+  --accent-3: #c59b46;
+  --shadow: 0 28px 70px rgba(19, 39, 52, 0.12);
+  --radius: 30px;
 }
 
 * {
@@ -27,9 +27,9 @@ body {
   font-family: "Space Grotesk", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at 10% 10%, rgba(81, 209, 216, 0.16), transparent 26%),
-    radial-gradient(circle at 85% 8%, rgba(255, 128, 81, 0.18), transparent 24%),
-    linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 54%, #0d1620 100%);
+    radial-gradient(circle at 10% 10%, rgba(29, 104, 114, 0.12), transparent 28%),
+    radial-gradient(circle at 85% 8%, rgba(221, 107, 45, 0.14), transparent 24%),
+    linear-gradient(180deg, #f3f6f7 0%, var(--bg) 52%, var(--bg-deep) 100%);
 }
 
 body::before {
@@ -38,8 +38,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(18, 33, 44, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 33, 44, 0.04) 1px, transparent 1px);
   background-size: 44px 44px;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.92), transparent 88%);
 }
@@ -58,8 +58,8 @@ body.is-modal-open {
   display: grid;
   place-items: center;
   background:
-    radial-gradient(circle at center, rgba(81, 209, 216, 0.16), transparent 24%),
-    linear-gradient(135deg, rgba(255, 128, 81, 0.94), rgba(8, 12, 17, 0.98));
+    radial-gradient(circle at center, rgba(29, 104, 114, 0.18), transparent 24%),
+    linear-gradient(135deg, rgba(221, 107, 45, 0.96), rgba(18, 33, 44, 0.96));
   z-index: 30;
   transform: translateY(100%);
   transition: transform 700ms cubic-bezier(0.77, 0, 0.18, 1);
@@ -75,7 +75,7 @@ body.is-modal-open {
   font-size: 2rem;
   font-weight: 800;
   color: var(--bg-deep);
-  background: linear-gradient(135deg, var(--accent-3), #fff2c1);
+  background: linear-gradient(135deg, var(--accent-3), #f5df9a);
 }
 
 body.is-transitioning .page-transition {
@@ -93,15 +93,15 @@ body.is-transitioning .page-transition {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(0.95) brightness(0.48);
+  filter: saturate(0.88) brightness(0.72);
 }
 
 .page-media-bg__overlay {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(6, 11, 17, 0.5), rgba(6, 11, 17, 0.82)),
-    radial-gradient(circle at top left, rgba(81, 209, 216, 0.12), transparent 28%);
+    linear-gradient(180deg, rgba(243, 246, 247, 0.2), rgba(230, 236, 239, 0.74)),
+    radial-gradient(circle at top left, rgba(29, 104, 114, 0.12), transparent 28%);
 }
 
 .page-shell {
@@ -115,7 +115,7 @@ body.is-transitioning .page-transition {
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  margin-bottom: 42px;
+  margin-bottom: 34px;
 }
 
 .brand,
@@ -137,8 +137,9 @@ body.is-transitioning .page-transition {
   color: var(--text);
   font-family: "Syne", sans-serif;
   font-weight: 800;
-  background: linear-gradient(135deg, rgba(255, 128, 81, 0.22), rgba(81, 209, 216, 0.18));
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(135deg, rgba(221, 107, 45, 0.14), rgba(29, 104, 114, 0.12));
+  border: 1px solid rgba(18, 33, 44, 0.12);
+  box-shadow: 0 14px 28px rgba(18, 33, 44, 0.08);
 }
 
 .nav-links {
@@ -166,7 +167,7 @@ body.is-transitioning .page-transition {
 }
 
 .nav-links a.is-active {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.62);
   border-color: var(--line);
 }
 
@@ -198,9 +199,21 @@ body.is-transitioning .page-transition {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--panel);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(18px);
   box-shadow: var(--shadow);
   padding: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-2), rgba(221, 107, 45, 0.55), transparent 82%);
+  opacity: 0.9;
 }
 
 .panel-hero {
@@ -210,7 +223,7 @@ body.is-transitioning .page-transition {
 .panel-accent,
 .panel-spotlight {
   background:
-    linear-gradient(160deg, rgba(255, 128, 81, 0.1), rgba(81, 209, 216, 0.08)),
+    linear-gradient(160deg, rgba(221, 107, 45, 0.08), rgba(29, 104, 114, 0.08)),
     var(--panel-strong);
 }
 
@@ -232,7 +245,8 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(3.2rem, 8vw, 6.3rem);
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: -0.04em;
 }
 
 h1 span {
@@ -264,7 +278,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin-top: 28px;
+  margin-top: 32px;
 }
 
 .button,
@@ -283,13 +297,14 @@ p {
 }
 
 .button-primary {
-  color: #09111a;
+  color: #fffdf8;
   background: linear-gradient(135deg, var(--accent-3), var(--accent));
+  box-shadow: 0 16px 28px rgba(221, 107, 45, 0.22);
 }
 
 .button-ghost {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.52);
   border: 1px solid var(--line);
 }
 
@@ -304,8 +319,8 @@ p {
 .timeline-item {
   padding: 18px;
   border-radius: 22px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(18, 33, 44, 0.06);
 }
 
 .signal-grid span,
@@ -350,7 +365,7 @@ p {
 
 .preview-grid,
 .grid-three {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .grid-two {
@@ -381,8 +396,9 @@ p {
 .project-tags span {
   padding: 10px 14px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.7);
   color: var(--text);
+  border: 1px solid rgba(18, 33, 44, 0.06);
 }
 
 .page-intro {
@@ -465,9 +481,9 @@ p {
   width: min(100%, 540px);
   border-radius: 30px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(5, 10, 16, 0.82);
-  box-shadow: 0 22px 56px rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(18, 33, 44, 0.08);
+  background: rgba(233, 239, 242, 0.92);
+  box-shadow: 0 20px 42px rgba(18, 33, 44, 0.12);
 }
 
 .project-media-window::after {
@@ -476,7 +492,7 @@ p {
   inset: 0;
   pointer-events: none;
   border-radius: inherit;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
 .project-media-track {
@@ -495,7 +511,7 @@ p {
 .project-media-slide {
   scroll-snap-align: start;
   aspect-ratio: 16 / 10;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.42);
 }
 
 .project-media-asset {
@@ -503,7 +519,7 @@ p {
   height: 100%;
   display: block;
   object-fit: cover;
-  background: #050a10;
+  background: #dfe7eb;
 }
 
 .project-media-embed {
@@ -525,10 +541,10 @@ p {
 .project-media-button {
   min-height: 42px;
   padding: 0 16px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(18, 33, 44, 0.1);
   border-radius: 999px;
   color: var(--text);
-  background: rgba(6, 11, 17, 0.58);
+  background: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(12px);
   pointer-events: auto;
   cursor: pointer;
@@ -546,7 +562,7 @@ p {
   height: 10px;
   border: 0;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.28);
+  background: rgba(18, 33, 44, 0.22);
   padding: 0;
   pointer-events: auto;
   cursor: pointer;
@@ -603,8 +619,8 @@ p {
   gap: 12px;
   padding: 14px;
   border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(18, 33, 44, 0.08);
+  background: rgba(255, 255, 255, 0.52);
 }
 
 .media-card__preview {
@@ -612,8 +628,8 @@ p {
   overflow: hidden;
   border-radius: 18px;
   background:
-    radial-gradient(circle at top left, rgba(81, 209, 216, 0.18), transparent 34%),
-    rgba(5, 10, 16, 0.92);
+    radial-gradient(circle at top left, rgba(29, 104, 114, 0.16), transparent 34%),
+    rgba(223, 231, 235, 0.92);
 }
 
 .media-card__asset {
@@ -621,7 +637,7 @@ p {
   height: 100%;
   display: block;
   object-fit: cover;
-  background: rgba(5, 10, 16, 0.92);
+  background: rgba(223, 231, 235, 0.92);
 }
 
 .media-card__meta {
@@ -661,7 +677,7 @@ p {
 .media-picker__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(4, 8, 12, 0.72);
+  background: rgba(18, 33, 44, 0.26);
   backdrop-filter: blur(8px);
 }
 
@@ -701,7 +717,7 @@ p {
   padding: 14px 16px;
   border-radius: 16px;
   border: 1px solid var(--line);
-  background: rgba(5, 10, 16, 0.78);
+  background: rgba(255, 255, 255, 0.76);
   color: var(--text);
   font: inherit;
 }
@@ -739,7 +755,7 @@ p {
   padding: 14px 16px;
   border-radius: 16px;
   border: 1px solid var(--line);
-  background: rgba(5, 10, 16, 0.78);
+  background: rgba(255, 255, 255, 0.76);
   color: var(--text);
   font: inherit;
 }
@@ -761,8 +777,8 @@ p {
 
 .stack-card {
   border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(18, 33, 44, 0.08);
+  background: rgba(255, 255, 255, 0.48);
   padding: 18px;
 }
 
@@ -793,7 +809,7 @@ p {
   margin-top: 18px;
   border-radius: 18px;
   border: 1px solid var(--line);
-  background: rgba(5, 10, 16, 0.88);
+  background: rgba(245, 248, 249, 0.96);
   color: var(--text);
   padding: 18px;
   font: 0.95rem/1.6 Consolas, Monaco, monospace;
@@ -843,6 +859,11 @@ p {
   .field-grid-2 {
     grid-template-columns: 1fr;
   }
+
+  .preview-grid,
+  .grid-three {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 720px) {
@@ -865,6 +886,11 @@ p {
     left: 12px;
     right: 12px;
     bottom: 12px;
+  }
+
+  .preview-grid,
+  .grid-three {
+    grid-template-columns: 1fr;
   }
 
   h1 {

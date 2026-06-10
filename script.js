@@ -153,18 +153,23 @@ function renderIntro(site, page) {
     <section class="section preview-grid">
       <a class="panel preview-card" data-reveal href="/about.html">
         <p class="eyebrow">About Me</p>
-        <h3>How I think, work, and collaborate.</h3>
-        <p>Background, values, and the kind of teammate I aim to be.</p>
+        <h3>How I think through engineering work.</h3>
+        <p>Background, values, and the way I approach technical problems in teams.</p>
       </a>
       <a class="panel preview-card" data-reveal href="/interests.html">
         <p class="eyebrow">Interests</p>
-        <h3>The ideas I keep coming back to.</h3>
-        <p>Technical themes, problem spaces, and engineering obsessions.</p>
+        <h3>The systems and environments I keep returning to.</h3>
+        <p>Technical themes, contexts, and the engineering questions that keep my attention.</p>
       </a>
       <a class="panel preview-card" data-reveal href="/projects.html">
         <p class="eyebrow">Projects</p>
-        <h3>Proof of execution across backend and product thinking.</h3>
-        <p>Project case studies with space for video showcases and media.</p>
+        <h3>Work shaped by systems, implementation, and communication.</h3>
+        <p>Project case studies that focus on problem framing, execution, and what was learned.</p>
+      </a>
+      <a class="panel preview-card" data-reveal href="/more.html">
+        <p class="eyebrow">More</p>
+        <h3>Affiliations, awards, and mentorship context.</h3>
+        <p>Additional signals around community, recognition, and how I contribute beyond a single build.</p>
       </a>
     </section>
   `;
