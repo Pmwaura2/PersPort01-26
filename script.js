@@ -153,23 +153,23 @@ function renderIntro(site, page) {
     <section class="section preview-grid">
       <a class="panel preview-card" data-reveal href="/about.html">
         <p class="eyebrow">About Me</p>
-        <h3>How I think through engineering work.</h3>
-        <p>Background, values, and the way I approach technical problems in teams.</p>
+        <h3>Aerospace systems, test discipline, and technical leadership.</h3>
+        <p>Education, working style, tools, and the engineering judgment behind the build work.</p>
       </a>
       <a class="panel preview-card" data-reveal href="/interests.html">
         <p class="eyebrow">Interests</p>
-        <h3>The systems and environments I keep returning to.</h3>
-        <p>Technical themes, contexts, and the engineering questions that keep my attention.</p>
+        <h3>Propulsion, verification, thermal systems, controls, and manufacturing.</h3>
+        <p>The technical themes that keep showing up across aircraft, rockets, research, and prototypes.</p>
       </a>
       <a class="panel preview-card" data-reveal href="/projects.html">
         <p class="eyebrow">Projects</p>
-        <h3>Work shaped by systems, implementation, and communication.</h3>
-        <p>Project case studies that focus on problem framing, execution, and what was learned.</p>
+        <h3>Hybrid-electric VTOL, DBF aircraft, high-power rocketry, and research.</h3>
+        <p>Case studies centered on requirements, test evidence, fabrication, and flight readiness.</p>
       </a>
       <a class="panel preview-card" data-reveal href="/more.html">
         <p class="eyebrow">More</p>
-        <h3>Affiliations, awards, and mentorship context.</h3>
-        <p>Additional signals around community, recognition, and how I contribute beyond a single build.</p>
+        <h3>AIAA, Sigma Xi, Tau Beta Pi, teaching, mentorship, and awards.</h3>
+        <p>Signals around research, service, recognition, and how I contribute to engineering communities.</p>
       </a>
     </section>
   `;
@@ -534,27 +534,27 @@ function normalizeProjectMedia(project) {
 function getDefaultMorePageContent() {
   return {
     eyebrow: "More",
-    title: "Additional context around how I show up.",
-    lede: "A few of the organizations, recognitions, and mentoring roles that shape how I contribute beyond a single project.",
+    title: "Engineering community, recognition, and mentorship.",
+    lede: "Affiliations, awards, and teaching roles that show how I contribute beyond a single technical project.",
     affiliations: [
       {
         label: "Campus",
-        title: "Engineering and builder communities",
-        description: "Active in student spaces where technical projects, peer learning, and collaborative builds are part of the culture."
+        title: "AIAA, ASME, NSBE, and Tripoli Rocketry Association",
+        description: "Professional communities connected to aircraft design, manufacturing, research, flight systems, and technical competition."
       }
     ],
     awards: [
       {
         label: "Recognition",
-        title: "Project and presentation distinction",
-        description: "Highlights for work that combined technical execution with clear communication."
+        title: "Aerospace design, research, and academic distinction",
+        description: "Recognition for senior design, Sigma Xi research presentation, Dean's List standing, and scholarship achievement."
       }
     ],
     mentorship: [
       {
         label: "Peer Support",
-        title: "Helping others ramp faster",
-        description: "I enjoy supporting classmates and collaborators through documentation, walkthroughs, and practical feedback."
+        title: "Teaching assistant, first-year mentor, and STEM event contributor",
+        description: "Support through lab instruction, office-hour help, robotics judging, and structured mentorship."
       }
     ],
     background: {

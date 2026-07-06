@@ -405,27 +405,27 @@ function normalizeContent(content) {
 function getDefaultMorePageContent() {
   return {
     eyebrow: "More",
-    title: "Additional context around how I show up.",
-    lede: "A few of the organizations, recognitions, and mentoring roles that shape how I contribute beyond a single project.",
+    title: "Engineering community, recognition, and mentorship.",
+    lede: "Affiliations, awards, and teaching roles that show how I contribute beyond a single technical project.",
     affiliations: [
       {
         label: "Campus",
-        title: "Engineering and builder communities",
-        description: "Active in student spaces where technical projects, peer learning, and collaborative builds are part of the culture."
+        title: "AIAA, ASME, NSBE, and Tripoli Rocketry Association",
+        description: "Professional communities connected to aircraft design, manufacturing, research, flight systems, and technical competition."
       }
     ],
     awards: [
       {
         label: "Recognition",
-        title: "Project and presentation distinction",
-        description: "Highlights for work that combined technical execution with clear communication."
+        title: "Aerospace design, research, and academic distinction",
+        description: "Recognition for senior design, Sigma Xi research presentation, Dean's List standing, and scholarship achievement."
       }
     ],
     mentorship: [
       {
         label: "Peer Support",
-        title: "Helping others ramp faster",
-        description: "I enjoy supporting classmates and collaborators through documentation, walkthroughs, and practical feedback."
+        title: "Teaching assistant, first-year mentor, and STEM event contributor",
+        description: "Support through lab instruction, office-hour help, robotics judging, and structured mentorship."
       }
     ],
     background: {

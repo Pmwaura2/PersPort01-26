@@ -2,7 +2,7 @@
   "site": {
     "name": "Peter Mwaura",
     "brand": "P/M",
-    "role": "Aerospace Engineer | Systems, Propulsion, Flight Test",
+    "role": "Aerospace Engineer | Propulsion, Flight Test, Systems Engineering",
     "email": "peter@example.com",
     "linkedin": "https://www.linkedin.com/",
     "github": "https://github.com/",
@@ -15,7 +15,7 @@
       "eyebrow": "Aerospace Engineer | Systems and Flight Test",
       "title": "Engineering complex",
       "titleAccent": "systems into flight.",
-      "lede": "I am Peter Mwaura, an aerospace engineering graduate with a computer science minor focused on propulsion, systems engineering, testing, and technical leadership. My work spans hybrid-electric aircraft design, Design/Build/Fly, rocket systems, applied research, and hands-on prototyping.",
+      "lede": "I am Peter Mwaura, an aerospace engineering graduate with a computer science minor focused on propulsion, flight test, systems engineering, and technical leadership. My work spans hybrid-electric VTOL aircraft, AIAA Design/Build/Fly aircraft, high-power rocketry, thermal systems research, wearable haptics, and hands-on manufacturing.",
       "primaryCtaLabel": "Explore Projects",
       "primaryCtaHref": "/projects.html",
       "secondaryCtaLabel": "Meet Peter",
@@ -24,11 +24,11 @@
       "overviewItems": [
         {
           "label": "Positioning",
-          "value": "Aerospace engineer with systems, propulsion, and test experience"
+          "value": "Aerospace engineer with propulsion, systems, testing, and manufacturing depth"
         },
         {
           "label": "Best Fit",
-          "value": "Aerospace, robotics, R&D, systems, and multidisciplinary engineering teams"
+          "value": "Aerospace, defense, aviation, robotics, R&D, test, and systems teams"
         },
         {
           "label": "Approach",
@@ -37,7 +37,7 @@
       ],
       "recruiterTitle": "Fast Recruiter Read",
       "recruiterHeading": "I work where analysis, build execution, and operational reality meet.",
-      "recruiterBody": "This portfolio is built to show more than finished outputs. It highlights how I lead technical work, decompose requirements, validate assumptions through testing, and move engineering from concept to reliable performance.",
+      "recruiterBody": "This portfolio is built to show how I move from mission intent to engineering evidence. I decompose requirements, model the system, build and instrument prototypes, run tests, interpret the data, and communicate the tradeoffs clearly enough for a team to act.",
       "metrics": [
         {
           "value": "3.9",
@@ -50,6 +50,10 @@
         {
           "value": "2",
           "label": "AIAA conference presentations"
+        },
+        {
+          "value": "150+",
+          "label": "students supported as a TA"
         }
       ],
       "background": {
@@ -60,29 +64,31 @@
     },
     "about": {
       "eyebrow": "About Me",
-      "title": "Systems-minded, test-driven, and comfortable close to the hardware.",
-      "lede": "I am most energized by engineering problems that demand rigor across analysis, prototyping, verification, and team coordination. I enjoy turning broad mission goals into requirements, architectures, experiments, and decisions that stand up under real operating constraints.",
-      "workingStyleTitle": "I like engineering environments where analysis and execution have to agree.",
+      "title": "Aerospace systems, test evidence, and hardware that has to earn trust.",
+      "lede": "I am most energized by engineering problems that demand rigor across analysis, prototyping, verification, manufacturing, and team coordination. I like turning broad mission goals into requirements, architectures, experiments, and decisions that can survive real operating constraints.",
+      "workingStyleTitle": "I am strongest where analysis, testing, and fabrication have to agree.",
       "workingStyleParagraphs": [
-        "My strongest work happens in multidisciplinary teams where propulsion, controls, structures, manufacturing, and operations all have to connect. I am comfortable contributing at both the system level and the test-bench level, whether that means trade studies, documentation, validation planning, or hands-on build work.",
-        "I care a lot about engineering judgment. To me, that means requirements traceability, safety margins, manufacturability, and making sure the design is honest about the environment it has to survive in."
+        "My strongest work happens in multidisciplinary teams where propulsion, controls, structures, manufacturing, software, and operations all have to connect. I am comfortable contributing at the system level and at the test-bench level, whether that means trade studies, documentation, validation planning, instrumentation, or hands-on build work.",
+        "I care a lot about engineering judgment. To me, that means requirements traceability, risk thinking, safety margins, manufacturability, and making sure the design is honest about the environment it has to survive in.",
+        "I also bring enough programming background to make analysis and automation useful: MATLAB and Simulink for aircraft and propulsion modeling, Python and C++ for technical computation, SQL and databases for structured data, and Arduino/LabVIEW workflows for sensing, controls, and test support."
       ],
       "recruiterNotes": [
         "Propulsion, systems engineering, and flight-test experience across aircraft and rocketry projects",
         "Published and presented technical work through AIAA forums and regional conferences",
         "Leadership experience as Chief Engineer, team president, mentor, and teaching assistant",
-        "Brings analysis, documentation, testing discipline, and hands-on fabrication together"
+        "Brings MATLAB, Python, CFD/FEA tools, CAD, instrumentation, and hands-on fabrication together",
+        "Comfortable with wind-tunnel testing, thrust rigs, telemetry, data reduction, SOPs, and failure analysis"
       ],
       "education": [
         {
           "year": "2026",
           "title": "B.S. in Aerospace Engineering, Minor in Computer Science",
-          "description": "Saint Louis University, St. Louis, MO. GPA: 3.9/4.0 with advanced work in aerodynamics, propulsion, structures, controls, astrodynamics, CFD, databases, scientific programming, and data structures."
+          "description": "Saint Louis University, St. Louis, MO. GPA: 3.9/4.0 with coursework in compressible CFD, boundary layer flow, propulsion, flight vehicle structures, stability and control, aircraft performance, astrodynamics, computer vision, databases, scientific programming, and data structures."
         },
         {
           "year": "2025",
           "title": "Research and Technical Teaching",
-          "description": "Worked across data center cooling research, collaborative haptics prototyping, and teaching support in thermodynamics, fluid dynamics, SolidWorks, labs, and experimental analysis."
+          "description": "Worked across data center cooling research, collaborative haptics prototyping, and teaching support in thermodynamics, fluid dynamics, dynamics, SolidWorks, physics labs, and mechanical engineering experiments."
         },
         {
           "year": "2023-2026",
@@ -91,7 +97,7 @@
         }
       ],
       "quote": "Good engineering is not just elegant on paper. It survives testing, constraints, and the handoff to the people who have to trust it.",
-      "quoteBody": "That standard shapes how I approach propulsion studies, verification planning, flight operations, manufacturing tradeoffs, and technical communication.",
+      "quoteBody": "That standard shapes how I approach propulsion studies, verification planning, flight operations, manufacturing tradeoffs, safety procedures, and technical communication.",
       "background": {
         "type": "none",
         "url": "",
@@ -101,33 +107,40 @@
     "interests": {
       "eyebrow": "Interests",
       "title": "I am drawn to engineering where performance has consequences.",
-      "lede": "The work I keep returning to sits at the intersection of aerospace systems, testing, controls, thermal analysis, and mission-driven design. I am especially interested in engineering environments where uncertainty has to be reduced through analysis and disciplined verification.",
+      "lede": "The work I keep returning to sits at the intersection of aerospace systems, propulsion, testing, controls, thermal analysis, structures, manufacturing, and mission-driven design. I am especially interested in environments where uncertainty has to be reduced through analysis and disciplined verification.",
       "cards": [
         {
           "eyebrow": "Propulsion and Energy",
-          "title": "Sizing the architecture, not just the component.",
-          "description": "I am interested in how propulsion, power distribution, and mission energy models interact across real operating phases, constraints, and failure margins."
+          "title": "Sizing the aircraft architecture, not just the motor.",
+          "description": "I am interested in propulsion and power systems where mission energy, voltage/current limits, C-rates, thermal behavior, efficiency losses, and reserve margins shape the architecture."
         },
         {
           "eyebrow": "Testing and Verification",
           "title": "Let the evidence shape the design.",
-          "description": "I enjoy designing test plans, instrumentation strategies, and data reduction workflows that expose what a system is really doing before decisions get locked in."
+          "description": "I enjoy test plans, instrumentation, calibration, telemetry, wind-tunnel work, thrust characterization, and data reduction workflows that expose what a system is really doing before decisions get locked in."
         },
         {
-          "eyebrow": "Multidisciplinary Build Work",
-          "title": "Engineering gets better when subsystems talk to each other.",
-          "description": "I like programs where structures, controls, manufacturing, software, and operations all have to line up, because that is where strong systems thinking becomes visible."
+          "eyebrow": "Structures and Manufacturing",
+          "title": "Design choices become real on the shop floor.",
+          "description": "I like the handoff from CAD and analysis to foam cutting, laser-cut structures, composites, FDM printing, CNC work, assembly, inspection, and repeatable build procedures."
+        },
+        {
+          "eyebrow": "Controls, Sensing, and Data",
+          "title": "Software is strongest when it supports the hardware.",
+          "description": "My computer science background supports technical computation, sensor-driven prototypes, database thinking, and analysis workflows that make physical tests easier to understand."
         }
       ],
       "favorites": [
         "Flight testing and propulsion validation",
         "Requirements decomposition and feasibility studies",
         "Thermal and fluid systems analysis",
+        "Wind-tunnel, thrust-rig, bench, and flight-test planning",
+        "CAD, composites, CNC, 3D printing, and prototype manufacturing",
         "Technical leadership on cross-functional build teams"
       ],
       "outsideParagraphs": [
-        "Outside of class and formal project work, I stay interested in aircraft systems, mission architecture, robotics, cooling systems, and the practical engineering tradeoffs behind high-performance hardware.",
-        "That is also why this portfolio is structured more like a technical studio than a generic student site. I want it to feel closer to a systems review than a resume pasted onto the web."
+        "Outside of class and formal project work, I stay interested in aircraft systems, mission architecture, robotics, data center cooling, recovery systems, avionics packaging, and the practical engineering tradeoffs behind high-performance hardware.",
+        "This site is meant to feel closer to a living technical portfolio than a static resume: a place where photos, videos, reports, design reviews, plots, and build documentation can sit beside the engineering decisions behind them."
       ],
       "background": {
         "type": "none",
@@ -137,27 +150,34 @@
     },
     "projects": {
       "eyebrow": "Projects",
-      "title": "Selected work in propulsion, flight systems, research, and build leadership.",
-      "lede": "These projects show how I work across system architecture, feasibility analysis, testing, fabrication, and technical coordination. The focus is on engineering decisions, validation, and what it took to make the work credible.",
+      "title": "Selected work in propulsion, flight systems, research, manufacturing, and test leadership.",
+      "lede": "These projects show how I work across system architecture, feasibility analysis, requirements, testing, fabrication, instrumentation, and technical coordination. Each one is framed around the engineering decisions, evidence, and tradeoffs that made the work credible.",
       "items": [
         {
           "eyebrow": "Senior Design | 2025-Present",
           "title": "HEART: Hybrid-Electric Aircraft for Rapid Organ Transportation",
-          "description": "Served as Propulsion Lead on a hybrid-electric VTOL UAV concept and prototype, translating mission requirements into propulsion architecture, energy models, and testable design decisions.",
+          "description": "Served as Propulsion Lead on a hybrid-electric VTOL UAV intended for rapid organ transportation, translating mission needs into aircraft-level requirements, propulsion architecture, power-management strategy, and testable design assumptions.",
           "bullets": [
-            "Built MATLAB mission energy and power models across VTOL, hover, cruise, descent, and reserve phases with efficiency losses and design margins included",
-            "Performed propulsion and energy system sizing that showed an all-electric COTS architecture was infeasible under battery energy-density and C-rating constraints",
-            "Defined high-voltage DC power distribution, generator-battery power sharing, and battery buffering strategy for high-power flight phases",
-            "Designed wind-tunnel testing to compare cyclic pitch, collective pitch, and differential thrust control authority in hover and transition regimes",
-            "Supported flight testing of the tilt-wing prototype through hover, wing transition, and sustained forward flight"
+            "Built MATLAB mission energy and power models across VTOL, hover, cruise, descent, and reserve phases with propulsive efficiency, electrical losses, and design margins included",
+            "Performed propulsion and energy-system sizing against battery energy density, voltage/current constraints, C-rating limits, generator output, and high-power transient demands",
+            "Showed why an all-electric COTS architecture was not feasible for the mission profile, then helped define a hybrid-electric generator-battery power-sharing architecture",
+            "Converted organ-transport mission objectives into engineering targets for range, cruise speed, altitude, reserve power, VTOL capability, endurance, and operating assumptions",
+            "Designed low-speed wind-tunnel testing to compare cyclic pitch, collective pitch, and differential thrust control authority in hover and transition regimes",
+            "Supported tilt-wing UAV flight testing through stable hover, controlled wing transition, and sustained forward flight",
+            "Contributed to fabrication and assembly using CNC foam cutting, laser-cut structural components, and fiberglass composite layup techniques"
           ],
           "role": "Propulsion lead, systems definition, testing and validation",
           "tech": [
             "MATLAB",
+            "Simulink",
             "Propulsion Sizing",
+            "Hybrid-Electric Aircraft",
+            "Power Distribution",
             "Requirements Decomposition",
+            "Operational Risk",
             "Flight Test",
-            "Wind-Tunnel Testing"
+            "Wind-Tunnel Testing",
+            "Composite Fabrication"
           ],
           "mediaType": "none",
           "mediaUrl": "",
@@ -166,19 +186,25 @@
         {
           "eyebrow": "AIAA Design/Build/Fly | 2024-Present",
           "title": "Competition Aircraft Program Leadership",
-          "description": "Led technical direction for Saint Louis University's Design/Build/Fly team, guiding aircraft design, propulsion verification, test readiness, and cross-team execution.",
+          "description": "Led technical direction for Saint Louis University's AIAA Design/Build/Fly aircraft program, guiding a 30-member team through aircraft configuration, propulsion verification, test readiness, manufacturing, documentation, and competition operations.",
           "bullets": [
-            "Directed system-level design reviews for a 30-member team and coordinated technical progress across six subsystems",
-            "Translated competition rules into quantitative weight, power, mission, and performance requirements",
-            "Led propulsion trade studies, thrust characterization, subsystem validation, and pre-flight verification procedures",
-            "Built a project-management framework with milestone tracking, risk visibility, and manufacturing schedule alignment",
-            "Helped grow membership by 130 percent and available funding by over 100 percent through recruitment, outreach, and operational leadership"
+            "Directed structured design reviews and cross-subsystem technical checkpoints across six teams to track progress, identify risks, and guide configuration decisions",
+            "Translated competition rules into quantitative system requirements for weight, power, payload, mission strategy, battery compliance, and performance constraints",
+            "Led propulsion trade studies, static thrust characterization, subsystem validation, telemetry review, and pre-flight verification procedures",
+            "Performed aircraft constraint analysis of thrust-to-weight ratio and wing loading in MATLAB to support an 18-lbf payload target",
+            "Authored and maintained test procedures, manufacturing guidance, and integration documentation to make aircraft builds repeatable",
+            "Represented the team at competition through flight operations, troubleshooting, inspections, and technical communication",
+            "Expanded active membership by 130 percent and available funding by over 100 percent through recruitment, alumni outreach, proposals, and organizational operations"
           ],
           "role": "President, Chief Engineer, former propulsion and testing lead",
           "tech": [
             "Systems Engineering",
             "MATLAB",
+            "Aircraft Constraint Analysis",
             "Propulsion Testing",
+            "Telemetry",
+            "Pre-Flight Verification",
+            "CNC and Additive Manufacturing",
             "Documentation",
             "Program Leadership"
           ],
@@ -189,18 +215,24 @@
         {
           "eyebrow": "Rocket Propulsion Lab | 2023-2025",
           "title": "Recovery and Safety Systems for Competitive High-Power Rocketry",
-          "description": "Led recovery and safety work for a Spaceport America Cup rocket program, combining design analysis, test validation, documentation, and operational safety discipline.",
+          "description": "Led recovery and safety work for a Spaceport America Cup high-power rocket program, combining recovery-system modeling, flight validation, composite manufacturing, telemetry testing, avionics integration, documentation, and safety discipline.",
           "bullets": [
-            "Designed and optimized a parachute recovery system through analytical modeling, ground tests, and flight validation, earning a maximum recovery score",
-            "Co-authored a technical paper published at AIAA SciTech 2025 based on recovery system design, analysis, and testing",
-            "Developed and enforced manufacturing and test safety procedures for energetic-material workflows while maintaining a 100 percent safety record",
-            "Integrated avionics, payload bays, telemetry hardware, and carbon-fiber structural elements to support reliable recovery operations"
+            "Designed and optimized a parachute recovery system through analytical modeling, ground tests, and flight validation, earning a maximum recovery score at Spaceport America Cup",
+            "Co-authored the Groundbreaker technical paper published at AIAA SciTech 2025, consolidating recovery system design, analysis, test results, and flight performance",
+            "Developed, implemented, and enforced manufacturing and test safety procedures for energetic-material workflows while maintaining a 100 percent safety record",
+            "Fabricated carbon-fiber airframe elements using filament winding to support a high strength-to-weight design for a 10,000-ft target altitude",
+            "Validated RF telemetry hardware through range and reliability testing to support post-landing tracking and recovery",
+            "Designed and integrated avionics and payload bays for secure electro-mechanical packaging of electronics and recovery hardware",
+            "Maintained traceable design analyses, test plans, results, and safety documentation for future team handoff"
           ],
           "role": "Recovery and safety team lead",
           "tech": [
             "Recovery Systems",
             "Telemetry",
             "Carbon Fiber",
+            "Filament Winding",
+            "Avionics Integration",
+            "Range Testing",
             "Safety Procedures",
             "AIAA Publication"
           ],
@@ -211,18 +243,24 @@
         {
           "eyebrow": "Research and Development | 2024-2025",
           "title": "Applied Research in Thermal Systems and Haptic Devices",
-          "description": "Worked across data center cooling research and wearable haptics prototyping, using modeling, experimentation, and user-centered iteration to improve technical decisions.",
+          "description": "Worked across data center cooling research and wearable haptics prototyping, using thermodynamic modeling, CAD, circuit development, user testing, Arduino control, and design iteration to improve technical decisions.",
           "bullets": [
-            "Conducted comparative and modular thermodynamic analysis of data-center cooling architectures including air, cold-plate liquid, and immersion cooling",
-            "Built CAD-modeled wearable prototypes, validated them through three user-test cycles with 10 plus participants, and reduced donning time by 48 percent",
-            "Designed circuits and Arduino-based control logic for tactile feedback, achieving 95 percent detection accuracy and cutting development time in half",
-            "Balanced analytical work with manufacturability, accessibility, and usability in early-stage prototype development"
+            "Conducted comparative analysis of data center cooling architectures including air cooling, cold-plate liquid cooling, and immersion cooling from energy and sustainability perspectives",
+            "Modeled heat dissipation, coolant selection, mass-flow requirements, rack count, and thermal load behavior through modular thermodynamic analysis",
+            "Conceptualized, CAD-modeled, and manufactured wearable haptic prototype components to improve comfort and accessibility",
+            "Validated designs through three user-test cycles with 10 plus participants, reducing donning time by 48 percent and reducing form factor by 40 percent",
+            "Developed electronic circuits from schematic capture through breadboard and perfboard prototyping, then bench-tested for signal integrity and function",
+            "Programmed Arduino control logic for piezo sensor input and vibration motor feedback, achieving 95 percent detection accuracy across 20 plus trials"
           ],
           "role": "Undergraduate researcher and research assistant",
           "tech": [
             "Thermodynamics",
+            "Data Center Cooling",
             "SolidWorks",
+            "PrusaSlicer",
+            "Circuit Prototyping",
             "Arduino",
+            "Piezo Sensors",
             "Experimental Design",
             "User Testing"
           ],
