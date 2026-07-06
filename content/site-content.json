@@ -2,20 +2,20 @@
   "site": {
     "name": "Peter Mwaura",
     "brand": "P/M",
-    "role": "Engineering Student | Systems Builder",
+    "role": "Aerospace Engineer | Systems, Propulsion, Flight Test",
     "email": "peter@example.com",
     "linkedin": "https://www.linkedin.com/",
     "github": "https://github.com/",
     "resumeUrl": "/media/resume/Peter-Mwaura-Resume.pdf",
-    "availability": "Open to Summer 2026 recruiting",
-    "location": "United States"
+    "availability": "Open to full-time engineering opportunities",
+    "location": "St. Louis, MO"
   },
   "pages": {
     "intro": {
-      "eyebrow": "Engineering Student | Systems Builder",
-      "title": "Engineering work shaped",
-      "titleAccent": "for the real world.",
-      "lede": "I am Peter Mwaura, an engineering student interested in systems, infrastructure, design, and the practical side of how things are made to work. I like projects that sit between technical depth, clear communication, and useful outcomes.",
+      "eyebrow": "Aerospace Engineer | Systems and Flight Test",
+      "title": "Engineering complex",
+      "titleAccent": "systems into flight.",
+      "lede": "I am Peter Mwaura, an aerospace engineering graduate with a computer science minor focused on propulsion, systems engineering, testing, and technical leadership. My work spans hybrid-electric aircraft design, Design/Build/Fly, rocket systems, applied research, and hands-on prototyping.",
       "primaryCtaLabel": "Explore Projects",
       "primaryCtaHref": "/projects.html",
       "secondaryCtaLabel": "Meet Peter",
@@ -24,32 +24,32 @@
       "overviewItems": [
         {
           "label": "Positioning",
-          "value": "Engineering student with strong systems instincts"
+          "value": "Aerospace engineer with systems, propulsion, and test experience"
         },
         {
           "label": "Best Fit",
-          "value": "Systems, product, operations, and multidisciplinary engineering roles"
+          "value": "Aerospace, robotics, R&D, systems, and multidisciplinary engineering teams"
         },
         {
           "label": "Approach",
-          "value": "Frame the problem, prototype deliberately, refine with evidence"
+          "value": "Define requirements, test deliberately, iterate with evidence"
         }
       ],
       "recruiterTitle": "Fast Recruiter Read",
-      "recruiterHeading": "I care about engineering that holds up outside the lab.",
-      "recruiterBody": "This site is structured to show how I think across systems, people, and implementation. The goal is not just to show what I built, but how I approach engineering problems with structure, usability, and context in mind.",
+      "recruiterHeading": "I work where analysis, build execution, and operational reality meet.",
+      "recruiterBody": "This portfolio is built to show more than finished outputs. It highlights how I lead technical work, decompose requirements, validate assumptions through testing, and move engineering from concept to reliable performance.",
       "metrics": [
         {
-          "value": "12+",
-          "label": "project-based builds"
+          "value": "3.9",
+          "label": "GPA in aerospace engineering"
         },
         {
-          "value": "4",
-          "label": "engineering lenses combined"
+          "value": "30",
+          "label": "member team led in AIAA DBF"
         },
         {
-          "value": "2026",
-          "label": "internship cycle"
+          "value": "2",
+          "label": "AIAA conference presentations"
         }
       ],
       "background": {
@@ -60,38 +60,38 @@
     },
     "about": {
       "eyebrow": "About Me",
-      "title": "Curious about systems, disciplined about execution.",
-      "lede": "I am most energized by engineering problems that are technical, open-ended, and close to lived reality. I like taking something vague, breaking it into workable parts, and building toward a solution that people can actually use.",
-      "workingStyleTitle": "I like turning complexity into something understandable and buildable.",
+      "title": "Systems-minded, test-driven, and comfortable close to the hardware.",
+      "lede": "I am most energized by engineering problems that demand rigor across analysis, prototyping, verification, and team coordination. I enjoy turning broad mission goals into requirements, architectures, experiments, and decisions that stand up under real operating constraints.",
+      "workingStyleTitle": "I like engineering environments where analysis and execution have to agree.",
       "workingStyleParagraphs": [
-        "My best work usually happens in multidisciplinary settings where technical design, communication, and constraints all matter at once. I enjoy being the person who can keep the engineering grounded while still moving the project forward.",
-        "I care about engineering judgment. That means thinking about reliability, usability, tradeoffs, and whether a solution makes sense in the environment where it will actually live."
+        "My strongest work happens in multidisciplinary teams where propulsion, controls, structures, manufacturing, and operations all have to connect. I am comfortable contributing at both the system level and the test-bench level, whether that means trade studies, documentation, validation planning, or hands-on build work.",
+        "I care a lot about engineering judgment. To me, that means requirements traceability, safety margins, manufacturability, and making sure the design is honest about the environment it has to survive in."
       ],
       "recruiterNotes": [
-        "Comfortable with systems thinking and implementation detail",
-        "Strong presentation, documentation, and design communication habits",
-        "Ownership mindset in student-led and collaborative work",
-        "Able to connect engineering decisions to human and operational impact"
+        "Propulsion, systems engineering, and flight-test experience across aircraft and rocketry projects",
+        "Published and presented technical work through AIAA forums and regional conferences",
+        "Leadership experience as Chief Engineer, team president, mentor, and teaching assistant",
+        "Brings analysis, documentation, testing discipline, and hands-on fabrication together"
       ],
       "education": [
         {
-          "year": "2024",
-          "title": "B.S. Candidate in Engineering",
-          "description": "Coursework spanning engineering analysis, systems design, prototyping, and human-centered problem solving."
+          "year": "2026",
+          "title": "B.S. in Aerospace Engineering, Minor in Computer Science",
+          "description": "Saint Louis University, St. Louis, MO. GPA: 3.9/4.0 with advanced work in aerodynamics, propulsion, structures, controls, astrodynamics, CFD, databases, scientific programming, and data structures."
         },
         {
           "year": "2025",
-          "title": "Applied Project Experience",
-          "description": "Worked on projects where technical development, iteration, and communication all mattered to the result."
+          "title": "Research and Technical Teaching",
+          "description": "Worked across data center cooling research, collaborative haptics prototyping, and teaching support in thermodynamics, fluid dynamics, SolidWorks, labs, and experimental analysis."
         },
         {
-          "year": "2026",
-          "title": "Prototype and Team Leadership",
-          "description": "Helped move ideas from concept to testable systems through reviews, coordination, and practical iteration."
+          "year": "2023-2026",
+          "title": "Leadership Through Build Teams",
+          "description": "Held progressive technical leadership roles in AIAA Design/Build/Fly and rocket propulsion teams spanning manufacturing, subsystem leadership, testing, safety, and chief engineering."
         }
       ],
-      "quote": "Good engineering solves the problem in front of you and still makes sense a year later.",
-      "quoteBody": "That is the standard I try to build toward, whether the work involves digital systems, physical context, or the handoff between the two.",
+      "quote": "Good engineering is not just elegant on paper. It survives testing, constraints, and the handoff to the people who have to trust it.",
+      "quoteBody": "That standard shapes how I approach propulsion studies, verification planning, flight operations, manufacturing tradeoffs, and technical communication.",
       "background": {
         "type": "none",
         "url": "",
@@ -100,34 +100,34 @@
     },
     "interests": {
       "eyebrow": "Interests",
-      "title": "I am drawn to engineering with context.",
-      "lede": "The work I keep coming back to usually sits at the intersection of systems, infrastructure, operations, and human use. I am especially interested in how engineering decisions play out in real environments.",
+      "title": "I am drawn to engineering where performance has consequences.",
+      "lede": "The work I keep returning to sits at the intersection of aerospace systems, testing, controls, thermal analysis, and mission-driven design. I am especially interested in engineering environments where uncertainty has to be reduced through analysis and disciplined verification.",
       "cards": [
         {
-          "eyebrow": "Systems",
-          "title": "How parts interact under real constraints.",
-          "description": "I like thinking about whole systems: inputs, failure points, interfaces, and how design choices behave once conditions stop being ideal."
+          "eyebrow": "Propulsion and Energy",
+          "title": "Sizing the architecture, not just the component.",
+          "description": "I am interested in how propulsion, power distribution, and mission energy models interact across real operating phases, constraints, and failure margins."
         },
         {
-          "eyebrow": "Infrastructure",
-          "title": "Built solutions that stay useful over time.",
-          "description": "I am interested in the durability and maintainability of engineered systems, especially where function, environment, and access all shape the design."
+          "eyebrow": "Testing and Verification",
+          "title": "Let the evidence shape the design.",
+          "description": "I enjoy designing test plans, instrumentation strategies, and data reduction workflows that expose what a system is really doing before decisions get locked in."
         },
         {
-          "eyebrow": "Prototyping",
-          "title": "Turning concepts into something testable.",
-          "description": "I enjoy early-stage build work because it reveals whether an idea actually works, what assumptions break first, and what needs to change next."
+          "eyebrow": "Multidisciplinary Build Work",
+          "title": "Engineering gets better when subsystems talk to each other.",
+          "description": "I like programs where structures, controls, manufacturing, software, and operations all have to line up, because that is where strong systems thinking becomes visible."
         }
       ],
       "favorites": [
-        "Designing around messy real-world constraints",
-        "Building first-pass prototypes with clear learning goals",
-        "Studying how systems behave under operational pressure",
-        "Translating engineering complexity into understandable decisions"
+        "Flight testing and propulsion validation",
+        "Requirements decomposition and feasibility studies",
+        "Thermal and fluid systems analysis",
+        "Technical leadership on cross-functional build teams"
       ],
       "outsideParagraphs": [
-        "Outside of coursework, I pay attention to how engineering shows up in transportation, water, infrastructure, operations, and product systems that serve people at scale.",
-        "That is why this portfolio now leans into a cleaner, more modern engineering language: I want it to reflect broad technical curiosity, not just software identity."
+        "Outside of class and formal project work, I stay interested in aircraft systems, mission architecture, robotics, cooling systems, and the practical engineering tradeoffs behind high-performance hardware.",
+        "That is also why this portfolio is structured more like a technical studio than a generic student site. I want it to feel closer to a systems review than a resume pasted onto the web."
       ],
       "background": {
         "type": "none",
@@ -137,64 +137,94 @@
     },
     "projects": {
       "eyebrow": "Projects",
-      "title": "Work across systems, operations, and implementation.",
-      "lede": "These projects show how I approach engineering work that blends structure, experimentation, coordination, and communication. The emphasis is on ownership, decision-making, and what the build was trying to accomplish.",
+      "title": "Selected work in propulsion, flight systems, research, and build leadership.",
+      "lede": "These projects show how I work across system architecture, feasibility analysis, testing, fabrication, and technical coordination. The focus is on engineering decisions, validation, and what it took to make the work credible.",
       "items": [
         {
-          "eyebrow": "Featured Build | 2026",
-          "title": "Engineering Portfolio Studio",
-          "description": "Designed and built a content-managed portfolio system to present engineering work with more clarity, structure, and media support than a static student site.",
+          "eyebrow": "Senior Design | 2025-Present",
+          "title": "HEART: Hybrid-Electric Aircraft for Rapid Organ Transportation",
+          "description": "Served as Propulsion Lead on a hybrid-electric VTOL UAV concept and prototype, translating mission requirements into propulsion architecture, energy models, and testable design decisions.",
           "bullets": [
-            "Structured the site around project communication, recruiter usability, and visual storytelling",
-            "Built editable content flows, media handling, and multi-page rendering from a shared data model",
-            "Treated the site itself as a design-and-systems project rather than a simple web page"
+            "Built MATLAB mission energy and power models across VTOL, hover, cruise, descent, and reserve phases with efficiency losses and design margins included",
+            "Performed propulsion and energy system sizing that showed an all-electric COTS architecture was infeasible under battery energy-density and C-rating constraints",
+            "Defined high-voltage DC power distribution, generator-battery power sharing, and battery buffering strategy for high-power flight phases",
+            "Designed wind-tunnel testing to compare cyclic pitch, collective pitch, and differential thrust control authority in hover and transition regimes",
+            "Supported flight testing of the tilt-wing prototype through hover, wing transition, and sustained forward flight"
           ],
-          "role": "Systems design, content architecture, interface implementation",
+          "role": "Propulsion lead, systems definition, testing and validation",
           "tech": [
-            "Content Systems",
-            "UI Architecture",
-            "Web Implementation",
-            "Design Communication"
+            "MATLAB",
+            "Propulsion Sizing",
+            "Requirements Decomposition",
+            "Flight Test",
+            "Wind-Tunnel Testing"
           ],
           "mediaType": "none",
           "mediaUrl": "",
           "mediaPoster": ""
         },
         {
-          "eyebrow": "Operations Systems | 2025",
-          "title": "Event and Operations Planning System",
-          "description": "Designed a structured system for managing schedules, registrations, and internal workflows for a student organization with growing coordination needs.",
+          "eyebrow": "AIAA Design/Build/Fly | 2024-Present",
+          "title": "Competition Aircraft Program Leadership",
+          "description": "Led technical direction for Saint Louis University's Design/Build/Fly team, guiding aircraft design, propulsion verification, test readiness, and cross-team execution.",
           "bullets": [
-            "Mapped the operational flow across members, events, communication, and reporting",
-            "Built the internal logic and admin pathways needed for smoother coordination",
-            "Focused on reducing friction for organizers while keeping the system legible"
+            "Directed system-level design reviews for a 30-member team and coordinated technical progress across six subsystems",
+            "Translated competition rules into quantitative weight, power, mission, and performance requirements",
+            "Led propulsion trade studies, thrust characterization, subsystem validation, and pre-flight verification procedures",
+            "Built a project-management framework with milestone tracking, risk visibility, and manufacturing schedule alignment",
+            "Helped grow membership by 130 percent and available funding by over 100 percent through recruitment, outreach, and operational leadership"
           ],
-          "role": "Operations design, workflow modeling, internal tooling",
+          "role": "President, Chief Engineer, former propulsion and testing lead",
           "tech": [
-            "Systems Mapping",
-            "Workflow Design",
-            "Data Structure",
-            "Admin Tools"
+            "Systems Engineering",
+            "MATLAB",
+            "Propulsion Testing",
+            "Documentation",
+            "Program Leadership"
           ],
           "mediaType": "none",
           "mediaUrl": "",
           "mediaPoster": ""
         },
         {
-          "eyebrow": "Decision Support | 2025",
-          "title": "Operations Insight Dashboard",
-          "description": "Created a dashboard-style decision support tool to turn raw operational information into something easier to interpret, discuss, and act on.",
+          "eyebrow": "Rocket Propulsion Lab | 2023-2025",
+          "title": "Recovery and Safety Systems for Competitive High-Power Rocketry",
+          "description": "Led recovery and safety work for a Spaceport America Cup rocket program, combining design analysis, test validation, documentation, and operational safety discipline.",
           "bullets": [
-            "Structured incoming information so patterns and bottlenecks were easier to spot",
-            "Designed outputs to support faster conversations and more confident decisions",
-            "Balanced visual clarity with the level of detail needed to stay technically honest"
+            "Designed and optimized a parachute recovery system through analytical modeling, ground tests, and flight validation, earning a maximum recovery score",
+            "Co-authored a technical paper published at AIAA SciTech 2025 based on recovery system design, analysis, and testing",
+            "Developed and enforced manufacturing and test safety procedures for energetic-material workflows while maintaining a 100 percent safety record",
+            "Integrated avionics, payload bays, telemetry hardware, and carbon-fiber structural elements to support reliable recovery operations"
           ],
-          "role": "Information design, systems thinking, communication",
+          "role": "Recovery and safety team lead",
           "tech": [
-            "Visualization",
-            "Metrics",
-            "Information Design",
-            "Decision Support"
+            "Recovery Systems",
+            "Telemetry",
+            "Carbon Fiber",
+            "Safety Procedures",
+            "AIAA Publication"
+          ],
+          "mediaType": "none",
+          "mediaUrl": "",
+          "mediaPoster": ""
+        },
+        {
+          "eyebrow": "Research and Development | 2024-2025",
+          "title": "Applied Research in Thermal Systems and Haptic Devices",
+          "description": "Worked across data center cooling research and wearable haptics prototyping, using modeling, experimentation, and user-centered iteration to improve technical decisions.",
+          "bullets": [
+            "Conducted comparative and modular thermodynamic analysis of data-center cooling architectures including air, cold-plate liquid, and immersion cooling",
+            "Built CAD-modeled wearable prototypes, validated them through three user-test cycles with 10 plus participants, and reduced donning time by 48 percent",
+            "Designed circuits and Arduino-based control logic for tactile feedback, achieving 95 percent detection accuracy and cutting development time in half",
+            "Balanced analytical work with manufacturability, accessibility, and usability in early-stage prototype development"
+          ],
+          "role": "Undergraduate researcher and research assistant",
+          "tech": [
+            "Thermodynamics",
+            "SolidWorks",
+            "Arduino",
+            "Experimental Design",
+            "User Testing"
           ],
           "mediaType": "none",
           "mediaUrl": "",
@@ -210,41 +240,41 @@
     "more": {
       "eyebrow": "More",
       "title": "Context beyond the project list.",
-      "lede": "Affiliations, recognition, and mentoring roles that say something about how I contribute in teams and communities, not just what I build on my own.",
+      "lede": "Affiliations, recognition, and mentoring roles that show how I contribute to technical communities in addition to building and testing systems.",
       "affiliations": [
         {
-          "label": "Campus",
-          "title": "Engineering and builder communities",
-          "description": "Involved in student spaces where collaborative problem solving, project work, and shared technical growth are central."
+          "label": "Professional",
+          "title": "AIAA, ASME, NSBE, and Tripoli Rocketry Association",
+          "description": "Active in engineering communities connected to aerospace design, manufacturing, research, flight systems, and technical competition."
         },
         {
-          "label": "Professional",
-          "title": "Cross-disciplinary engineering communities",
-          "description": "Drawn to communities that connect technical work with communication, leadership, and practical impact."
+          "label": "Honor Societies",
+          "title": "Tau Beta Pi, Sigma Xi, and Alpha Sigma Nu",
+          "description": "Affiliations that reflect technical excellence, research contribution, and sustained academic performance."
         }
       ],
       "awards": [
         {
-          "label": "Recognition",
-          "title": "Project and presentation distinction",
-          "description": "Recognition for work that combined technical execution, clarity, and thoughtful delivery."
+          "label": "2026",
+          "title": "Best Aerospace Engineering Senior Design Award",
+          "description": "Recognition for high-impact senior design work rooted in strong technical analysis, systems definition, and engineering execution."
         },
         {
-          "label": "Academic",
-          "title": "Growth through ambitious coursework",
-          "description": "Academic milestones that reflect persistence, curiosity, and a willingness to work through challenging technical material."
+          "label": "Research and Academic",
+          "title": "Sigma Xi Presentation Award, Dean's List, M-Pesa Foundation Scholar",
+          "description": "Includes 2nd Place Presentation Award at the Sigma Xi Research Symposium, continuous Dean's List standing, and major scholarship distinction."
         }
       ],
       "mentorship": [
         {
-          "label": "Peer Support",
-          "title": "Helping others ramp faster",
-          "description": "I enjoy making technical work more approachable through walkthroughs, documentation, and practical feedback."
+          "label": "Teaching",
+          "title": "Teaching assistant across labs and core engineering subjects",
+          "description": "Supported 150 plus students through SolidWorks, physics, thermodynamics, fluid dynamics, and mechanical engineering lab work with an emphasis on technical clarity and confidence."
         },
         {
           "label": "Community",
-          "title": "Creating momentum in team environments",
-          "description": "To me, mentorship often means reducing confusion, sharing structure, and helping collaborators move with more confidence."
+          "title": "Mentor and engineering event organizer",
+          "description": "Mentored first-year students, judged regional robotics projects, and organized SLU's first ASME EFx engineering competition experience."
         }
       ],
       "background": {
@@ -255,10 +285,10 @@
     },
     "contact": {
       "eyebrow": "Contact",
-      "title": "Open to engineering teams building with purpose.",
-      "lede": "I am looking for internship opportunities where systems thinking, technical rigor, and practical problem solving all matter, especially in multidisciplinary environments.",
-      "reachOutTitle": "Let’s talk about the problems your team is solving.",
-      "reachOutBody": "If you are hiring for work that values strong fundamentals, curiosity, and the ability to connect engineering to real use, I would be glad to connect.",
+      "title": "Open to full-time engineering work with technical depth.",
+      "lede": "I am looking for opportunities where systems thinking, analysis, testing, and hands-on engineering all matter, especially on teams building credible aerospace, research, robotics, or high-performance hardware systems.",
+      "reachOutTitle": "Let's talk about the systems your team is building.",
+      "reachOutBody": "If your team values rigorous engineering, thoughtful validation, and people who can move between analysis, documentation, testing, and build execution, I would be glad to connect.",
       "primaryButtonLabel": "Email Peter",
       "primaryButtonHref": "mailto:peter@example.com",
       "secondaryButtonLabel": "Review Projects",
