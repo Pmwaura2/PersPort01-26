@@ -95,6 +95,29 @@ async function loadAdminContent() {
   throw new Error("Content unavailable.");
 }
 
+async function restoreDefaults() {
+  try {
+    statusLabel.textContent = "Restoring repo content...";
+
+    const response = await fetch("/api/content?action=restore-defaults", {
+      method: "POST",
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      throw new Error(result.error || "Restore failed.");
+    }
+
+    await loadContent();
+    statusLabel.textContent = "Repo content restored.";
+  } catch (error) {
+    statusLabel.textContent = error.message || "Restore failed.";
+  }
+}
+
 function populateForm(content) {
   const { site, pages } = content;
 
@@ -923,6 +946,7 @@ document.querySelectorAll("input, textarea, select").forEach((element) => {
 
 document.getElementById("save-content").addEventListener("click", saveContent);
 document.getElementById("reload-content").addEventListener("click", loadContent);
+document.getElementById("restore-defaults").addEventListener("click", restoreDefaults);
 document.getElementById("upload-media").addEventListener("click", uploadMedia);
 document.getElementById("refresh-media-library").addEventListener("click", loadMediaLibrary);
 document.getElementById("close-media-picker").addEventListener("click", closeMediaPicker);
