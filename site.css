@@ -368,6 +368,30 @@ p {
   grid-template-columns: repeat(4, 1fr);
 }
 
+.publication-list {
+  display: grid;
+  gap: 18px;
+}
+
+.publication-card {
+  display: grid;
+  gap: 10px;
+}
+
+.publication-card h3 {
+  max-width: 980px;
+}
+
+.publication-card .meta {
+  margin: 0;
+  color: var(--accent);
+}
+
+.publication-link {
+  width: max-content;
+  margin-top: 6px;
+}
+
 .grid-two {
   grid-template-columns: repeat(2, 1fr);
 }

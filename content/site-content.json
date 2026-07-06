@@ -282,7 +282,23 @@
     "more": {
       "eyebrow": "More",
       "title": "Context beyond the project list.",
-      "lede": "Affiliations, recognition, and mentoring roles that show how I contribute to technical communities in addition to building and testing systems.",
+      "lede": "Publications, affiliations, recognition, and mentoring roles that show how I contribute to technical communities in addition to building and testing systems.",
+      "publications": [
+        {
+          "label": "AIAA Region V | 2026",
+          "title": "A Tilt-Wing Emergency Aerial Response Vehicle for Rapid Organ Transportation",
+          "description": "Presented at the AIAA Region V Conference in Ames, Iowa. The work documents the HEART senior design concept for a tilt-wing emergency aerial response vehicle supporting rapid organ transportation.",
+          "authors": "A. Bloom, A. Ibrahim, P. Mwaura, and R. Santiago",
+          "link": ""
+        },
+        {
+          "label": "AIAA SciTech | 2025",
+          "title": "Groundbreaker: Saint Louis University's High-Powered Rocket Entry to 2024 Spaceport America Cup",
+          "description": "Published in the AIAA SciTech 2025 Forum proceedings. The paper consolidates high-power rocket recovery design, analysis, manufacturing, testing, and competition flight results.",
+          "authors": "P. Mwaura, A. Brewer, A. Oxales, A. Alton, I. Ali, et al.",
+          "link": "https://doi.org/10.2514/6.2025-1094"
+        }
+      ],
       "affiliations": [
         {
           "label": "Professional",

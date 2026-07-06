@@ -406,7 +406,16 @@ function getDefaultMorePageContent() {
   return {
     eyebrow: "More",
     title: "Engineering community, recognition, and mentorship.",
-    lede: "Affiliations, awards, and teaching roles that show how I contribute beyond a single technical project.",
+    lede: "Publications, affiliations, awards, and teaching roles that show how I contribute beyond a single technical project.",
+    publications: [
+      {
+        label: "AIAA Region V | 2026",
+        title: "A Tilt-Wing Emergency Aerial Response Vehicle for Rapid Organ Transportation",
+        description: "Presented at the AIAA Region V Conference in Ames, Iowa.",
+        authors: "A. Bloom, A. Ibrahim, P. Mwaura, and R. Santiago",
+        link: ""
+      }
+    ],
     affiliations: [
       {
         label: "Campus",
