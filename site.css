@@ -42,6 +42,7 @@ body::before {
     linear-gradient(90deg, rgba(172, 255, 72, 0.04) 1px, transparent 1px);
   background-size: 44px 44px;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.92), transparent 88%);
+  z-index: 1;
 }
 
 body.is-transitioning {
@@ -85,8 +86,9 @@ body.is-transitioning .page-transition {
 .page-media-bg {
   position: fixed;
   inset: 0;
-  z-index: -2;
+  z-index: 0;
   overflow: hidden;
+  pointer-events: none;
 }
 
 .page-media-bg__asset {
@@ -104,10 +106,78 @@ body.is-transitioning .page-transition {
     radial-gradient(circle at top left, rgba(114, 255, 63, 0.1), transparent 28%);
 }
 
+.page-media-bg--flight {
+  background: #050a05;
+}
+
+.page-media-bg__still,
+.page-media-bg__video {
+  position: absolute;
+  inset: -5% 0;
+  width: 100%;
+  height: 110%;
+  object-fit: cover;
+  transform: translate3d(0, var(--flight-shift, 0%), 0) scale(1.06);
+  filter: grayscale(0.45) saturate(0.7) brightness(0.68) contrast(1.1);
+  will-change: transform;
+}
+
+.page-media-bg__still {
+  background-size: cover;
+  background-position: center;
+}
+
+.page-media-bg--flight .page-media-bg__overlay {
+  background:
+    linear-gradient(90deg, rgba(2, 7, 3, 0.76), rgba(2, 7, 3, 0.38) 60%, rgba(2, 7, 3, 0.55)),
+    linear-gradient(180deg, rgba(2, 7, 3, 0.35), rgba(2, 7, 3, 0.72)),
+    radial-gradient(ellipse at 80% 25%, rgba(93, 255, 54, 0.18), transparent 56%);
+}
+
+.page-media-bg__grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.24;
+  background: linear-gradient(90deg, transparent 95%, rgba(150, 255, 75, 0.22) 95%);
+  background-size: 20% 100%;
+  mask-image: linear-gradient(transparent, #000 20%, #000 80%, transparent);
+}
+
+.page-media-bg__grid::after {
+  content: "";
+  position: absolute;
+  right: 3%;
+  top: 18%;
+  width: 2px;
+  height: 64%;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  transform: scaleY(var(--flight-progress, 0));
+  transform-origin: top;
+}
+
+.page-media-bg__credit {
+  position: absolute;
+  bottom: 12px;
+  right: 18px;
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  color: rgba(210, 255, 188, 0.46);
+}
+
 .page-shell {
+  position: relative;
+  z-index: 2;
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
   padding: 24px 0 72px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-media-bg__still,
+  .page-media-bg__video {
+    transform: scale(1.06);
+    will-change: auto;
+  }
 }
 
 .site-header {

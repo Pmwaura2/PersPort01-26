@@ -3,6 +3,7 @@ const activeNav = document.querySelector(`[data-nav="${currentPage}"]`);
 const pageRoot = document.getElementById("page-content");
 const backgroundRoot = document.getElementById("page-media-bg");
 const brandLink = document.getElementById("brand-link");
+const nasaFlightMedia = "https://images-assets.nasa.gov/video/AFRC-2025-14544-X-59_First_Flight_4K_MEDIA_BROLL_v4_10-28-25YT/AFRC-2025-14544-X-59_First_Flight_4K_MEDIA_BROLL_v4_10-28-25YT";
 
 if (activeNav) {
   activeNav.classList.add("is-active");
@@ -611,7 +612,12 @@ function extractYouTubeId(url) {
 }
 
 function applyBackground(background) {
-  if (!backgroundRoot || !background || !background.url || background.type === "none") {
+  if (!backgroundRoot) {
+    return;
+  }
+
+  if (!background || !background.url || background.type === "none") {
+    applyFlightBackground();
     return;
   }
 
@@ -629,6 +635,68 @@ function applyBackground(background) {
     <img class="page-media-bg__asset" data-resilient-image="true" src="${escapeHtml(getRenderableImageUrl(background.url))}" alt="" />
     <div class="page-media-bg__overlay"></div>
   `;
+}
+
+function applyFlightBackground() {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const saveData = navigator.connection?.saveData;
+  const poster = `${nasaFlightMedia}~medium_2.jpg`;
+
+  backgroundRoot.classList.add("page-media-bg--flight");
+  backgroundRoot.innerHTML = `
+    <div class="page-media-bg__still" style="background-image: url('${poster}')"></div>
+    <div class="page-media-bg__overlay"></div>
+    <div class="page-media-bg__grid"></div>
+    <div class="page-media-bg__credit">FLIGHT STUDY / NASA X-59</div>
+  `;
+
+  let video;
+  function updateMotionPreference() {
+    if (reducedMotion.matches || saveData) {
+      if (video) {
+        video.pause();
+        video.remove();
+        video = null;
+      }
+      backgroundRoot.style.removeProperty("--flight-shift");
+      return;
+    }
+    if (video) return;
+    video = document.createElement("video");
+    video.className = "page-media-bg__asset page-media-bg__video";
+    video.muted = true;
+    video.loop = true;
+    video.autoplay = true;
+    video.playsInline = true;
+    video.preload = "metadata";
+    video.src = `${nasaFlightMedia}~preview.mp4`;
+    backgroundRoot.querySelector(".page-media-bg__still").after(video);
+    video.play().catch(() => {});
+    updateFlightPosition();
+  }
+
+  let ticking = false;
+  function updateFlightPosition() {
+    if (reducedMotion.matches || saveData || ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const distance = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      const progress = Math.min(1, Math.max(0, window.scrollY / distance));
+      backgroundRoot.style.setProperty("--flight-shift", `${(progress * -8).toFixed(2)}%`);
+      backgroundRoot.style.setProperty("--flight-progress", progress.toFixed(3));
+      ticking = false;
+    });
+  }
+
+  window.addEventListener("scroll", updateFlightPosition, { passive: true });
+  window.addEventListener("resize", updateFlightPosition, { passive: true });
+  reducedMotion.addEventListener("change", updateMotionPreference);
+  document.addEventListener("visibilitychange", () => {
+    if (!video) return;
+    if (document.hidden) video.pause();
+    else video.play().catch(() => {});
+  });
+  updateMotionPreference();
 }
 
 function getRenderableImageUrl(url) {
