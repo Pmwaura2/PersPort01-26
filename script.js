@@ -16,6 +16,7 @@ loadSiteContent()
     }
 
     renderPage(content);
+    setupAircraftShowcase();
     wirePageTransitions();
     setupReveal();
     setupProjectMediaWindows();
@@ -136,6 +137,7 @@ function renderIntro(site, page) {
         </aside>
       </div>
     </section>
+    ${renderAircraftShowcase()}
     <section class="section section-split">
       <article class="panel" data-reveal>
         <p class="eyebrow">${escapeHtml(page.recruiterTitle)}</p>
@@ -174,6 +176,60 @@ function renderIntro(site, page) {
       </a>
     </section>
   `;
+}
+
+function renderAircraftShowcase() {
+  return `
+    <section class="flight-study" id="flight-study" aria-labelledby="flight-study-title">
+      <div class="flight-study__viewport">
+        <div class="flight-study__topline"><span>INTERACTIVE FLIGHT STUDY</span><span>01 / CONCEPT</span></div>
+        <div class="flight-study__heading">
+          <p class="eyebrow">Designed to explore</p>
+          <h2 id="flight-study-title">A different<br><em>perspective.</em></h2>
+          <p>Scroll to explore an aircraft concept through the lens of form, flight, and systems.</p>
+          <a href="/projects.html" class="flight-study__link">Explore the real projects <span aria-hidden="true">&#8599;</span></a>
+        </div>
+        <div class="flight-study__scene" aria-hidden="true">
+          <div class="flight-study__orbit flight-study__orbit--one"></div>
+          <div class="flight-study__orbit flight-study__orbit--two"></div>
+          <svg class="flight-study__fallback" viewBox="0 0 440 440" focusable="false">
+            <path d="M220 22c-12 0-19 26-22 56l-7 100L48 270l-3 20 142-40-3 87-47 37v14l59-15 24 41 24-41 59 15v-14l-47-37-3-87 142 40-3-20-143-92-7-100c-3-30-10-56-22-56Z" fill="#85998b" stroke="#c4ff75" stroke-width="2"/>
+            <path d="M220 65c-7 0-11 20-11 44h22c0-24-4-44-11-44Z" fill="#152c25" stroke="#9fff56"/>
+          </svg>
+          <div class="flight-study__canvas"></div>
+          <span class="flight-study__crosshair">+</span>
+        </div>
+        <div class="flight-study__bottom">
+          <div class="flight-study__steps" aria-label="Concept design highlights">
+            <div class="flight-study__step is-active"><span>01 / FORM</span><strong>Tapered fuselage</strong></div>
+            <div class="flight-study__step"><span>02 / FLIGHT</span><strong>Swept wing &amp; tail</strong></div>
+            <div class="flight-study__step"><span>03 / SYSTEMS</span><strong>Twin underwing nacelles</strong></div>
+          </div>
+          <div class="flight-study__foot"><span>CONCEPT VISUALIZATION &middot; NOT A PERFORMANCE SPECIFICATION</span><span>SCROLL TO EXPLORE &darr;</span></div>
+          <div class="flight-study__progress" aria-hidden="true"><span></span></div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function setupAircraftShowcase() {
+  const section = document.querySelector(".flight-study");
+  if (!section) return;
+  const load = () => import("./aircraft-showcase.js")
+    .then((module) => module.initAircraftShowcase(section))
+    .catch(() => section.classList.add("flight-study--fallback"));
+  if (!("IntersectionObserver" in window)) {
+    load();
+    return;
+  }
+  const observer = new IntersectionObserver((entries) => {
+    if (entries.some((entry) => entry.isIntersecting)) {
+      observer.disconnect();
+      load();
+    }
+  }, { rootMargin: "500px" });
+  observer.observe(section);
 }
 
 function renderAbout(page) {
